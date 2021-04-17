@@ -1,21 +1,17 @@
-import { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import About from "../components/About";
+import Contact from "../components/Contact";
 import Experience from "../components/Experience";
-
-const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
-];
+import Projects from "../components/Projects";
 
 export default function Home() {
   return (
     <>
       <About />
-      <Experience />
+      <div className="px-12 divide-y-2 divide-solid">
+        <Experience />
+        <Projects />
+        <Contact />
+      </div>
     </>
   );
 }

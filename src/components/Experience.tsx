@@ -13,32 +13,27 @@ const CARDS = [CARD_EXAMPLE, CARD_EXAMPLE];
 
 function Experience(): JSX.Element {
   return (
-    <div className="min-w-screen min-h-screen bg-white">
-      <div className="p-12 w-full h-full">
-        <p className="text-black font-bold text-xl mb-7">
-          Professional Experience
-        </p>
-        <div className="flex flex-col space-y-6">
-          {CARDS.map((experience) => (
-            <div className="flex flex-row space-x-4 p-4 shadow rounded">
-              <img
-                className="w-16 h-16 rounded"
-                src={experience.logo}
-                alt={`${experience.company} logo`}
-              />
-              <div>
-                <p className="text-black font-semibold">{experience.title}</p>
-                <p className="text-black text-sm">{experience.company}</p>
-                <p className="text-black text-sm opacity-80">
-                  {experience.years}
-                </p>
-                <p className="text-black mt-2 text-sm">
-                  {experience.description}
-                </p>
-              </div>
+    <div id="experience" className="py-12 w-full h-full">
+      <p className="font-bold text-xl mb-7">Professional Experience</p>
+      <div className="flex flex-col space-y-6">
+        {CARDS.map((experience, index) => (
+          <div
+            key={index}
+            className="flex flex-row space-x-4 p-5 shadow rounded"
+          >
+            <img
+              className="w-14 h-14 rounded my-1"
+              src={experience.logo}
+              alt={`${experience.company} logo`}
+            />
+            <div>
+              <p className="font-semibold">{experience.title}</p>
+              <p className="text-sm">{experience.company}</p>
+              <p className="text-sm opacity-80">{experience.years}</p>
+              <p className="mt-2 text-sm">{experience.description}</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
