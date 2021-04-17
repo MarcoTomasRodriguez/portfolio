@@ -19,19 +19,21 @@ function Experience(): JSX.Element {
         {CARDS.map((experience, index) => (
           <div
             key={index}
-            className="flex flex-row space-x-4 p-5 shadow rounded"
+            className="flex flex-col p-5 space-y-2 shadow rounded"
           >
-            <img
-              className="w-14 h-14 rounded my-1"
-              src={experience.logo}
-              alt={`${experience.company} logo`}
-            />
-            <div>
-              <p className="font-semibold">{experience.title}</p>
-              <p className="text-sm">{experience.company}</p>
-              <p className="text-sm opacity-80">{experience.years}</p>
-              <p className="mt-2 text-sm">{experience.description}</p>
+            <div key={index} className="flex flex-row space-x-4">
+              <img
+                className="w-14 h-14 rounded my-1"
+                src={experience.logo}
+                alt={`${experience.company} logo`}
+              />
+              <div>
+                <p className="font-semibold">{experience.title}</p>
+                <p className="text-sm">{experience.company}</p>
+                <p className="text-sm opacity-80">{experience.years}</p>
+              </div>
             </div>
+            <p className="text-sm">{experience.description}</p>
           </div>
         ))}
       </div>

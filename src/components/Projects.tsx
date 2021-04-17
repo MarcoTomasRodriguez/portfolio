@@ -12,7 +12,7 @@ const CARDS = [CARD_EXAMPLE, CARD_EXAMPLE];
 
 function Projects(): JSX.Element {
   return (
-    <div className="py-12 w-full h-full">
+    <div id="projects" className="py-12 w-full h-full">
       <p className="text-black font-bold text-xl mb-7">Projects</p>
       <div className="flex flex-col space-y-6">
         {CARDS.map((project, index) => (
