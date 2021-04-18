@@ -1,3 +1,4 @@
+import React from "react";
 import {
   BriefcaseIcon,
   CodeIcon,
@@ -5,7 +6,6 @@ import {
   TranslateIcon,
   UserIcon,
 } from "@heroicons/react/solid";
-import React from "react";
 
 interface HeaderButton {
   title: string;
@@ -49,26 +49,21 @@ const BUTTONS = [
 
 function Header(): JSX.Element {
   return (
-    <header
-      className="fixed flex flex-row space-x-12 md:space-x-14 lg:space-x-16 justify-center w-full z-50 p-4"
-      style={{ backgroundColor: "#2748d4" }}
-    >
+    <header className="fixed flex flex-row space-x-8 sm:space-x-12 md:space-x-14 lg:space-x-12 justify-center w-full z-50 bg-primary p-2">
       {BUTTONS.map((button, index) => (
-        <div>
-          <button
-            key={index}
-            className="flex flex-row text-sm text-white font-bold focus:outline-none"
-            onClick={button.onClick}
-          >
-            <button.icon
-              className="visible sm:invisible h-5 w-5 sm:h-0 sm:w-0"
-              viewBox="0 0 20 20"
-            />
-            <p className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">
-              {button.title}
-            </p>
-          </button>
-        </div>
+        <button
+          key={index}
+          className="flex flex-row text-sm text-white font-bold focus:outline-none p-3 rounded hover:bg-black hover:bg-opacity-10"
+          onClick={button.onClick}
+        >
+          <button.icon
+            className="visible sm:invisible h-5 w-5 sm:h-0 sm:w-0"
+            viewBox="0 0 20 20"
+          />
+          <p className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">
+            {button.title}
+          </p>
+        </button>
       ))}
     </header>
   );

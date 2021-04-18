@@ -5,7 +5,7 @@ function About(): JSX.Element {
   return (
     <div
       id="about"
-      className="relative grid place-content-center min-w-screen min-h-screen bg-gradient-to-br from-blue-700 to-indigo-700"
+      className="relative grid place-content-center min-w-screen min-h-screen bg-primary"
     >
       <p className="text-center text-white font-bold text-2xl py-4 font-sans">
         Hey! Welcome, I'm Marco Tomás Rodríguez
