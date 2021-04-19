@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BriefcaseIcon,
   CodeIcon,
@@ -6,7 +6,20 @@ import {
   TranslateIcon,
   UserIcon,
 } from "@heroicons/react/solid";
+import {
+  distinctUntilChanged,
+  filter,
+  map,
+  pairwise,
+  share,
+  throttleTime,
+} from "rxjs/operators";
+import { fromEvent } from "rxjs";
 
+enum Direction {
+  Up = "Up",
+  Down = "Down",
+}
 interface HeaderButton {
   title: string;
   icon: (props: React.ComponentProps<"svg">) => JSX.Element;
@@ -48,8 +61,36 @@ const BUTTONS = [
 ] as HeaderButton[];
 
 function Header(): JSX.Element {
+  const [visibility, setVisibility] = useState(true);
+
+  useEffect(() => {
+    // window.scroll observable.
+    const scroll$ = fromEvent(window, "scroll").pipe(
+      throttleTime(10),
+      map(() => window.pageYOffset),
+      pairwise(),
+      map(([y1, y2]) => (y2 < y1 ? Direction.Up : Direction.Down)),
+      distinctUntilChanged(),
+      share()
+    );
+
+    // On scroll up, set header visibility to true.
+    scroll$
+      .pipe(filter((direction) => direction === Direction.Up))
+      .subscribe(() => setVisibility(() => true));
+
+    // On scroll down, set header visibility to false.
+    scroll$
+      .pipe(filter((direction) => direction === Direction.Down))
+      .subscribe(() => setVisibility(() => false));
+  }, []);
+
   return (
-    <header className="fixed flex flex-row space-x-8 sm:space-x-12 md:space-x-14 lg:space-x-12 justify-center w-full z-50 bg-primary p-2">
+    <header
+      className={`fixed flex flex-row space-x-8 sm:space-x-6 md:space-x-14 justify-center w-full z-50 bg-primary p-2 transition transform duration-200 ease-in ${
+        visibility ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       {BUTTONS.map((button, index) => (
         <button
           key={index}
