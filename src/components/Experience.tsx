@@ -13,11 +13,11 @@ const CARD_EXAMPLE = {
 const CARDS = [CARD_EXAMPLE, CARD_EXAMPLE];
 
 export default function Experience(): JSX.Element {
-  const { t } = useTranslation("home");
+  const { t } = useTranslation("experience");
 
   return (
     <div id="experience" className="py-12 w-full h-full">
-      <p className="font-bold text-xl mb-7">{t("experienceTitle")}</p>
+      <p className="font-bold text-xl mb-7">{t("title")}</p>
       <div className="flex flex-col space-y-6">
         {CARDS.map((experience, index) => (
           <div

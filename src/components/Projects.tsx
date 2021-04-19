@@ -12,11 +12,11 @@ const CARD_EXAMPLE = {
 const CARDS = [CARD_EXAMPLE, CARD_EXAMPLE];
 
 export default function Projects(): JSX.Element {
-  const { t } = useTranslation("home");
+  const { t } = useTranslation("projects");
 
   return (
     <div id="projects" className="py-12 w-full h-full">
-      <p className="text-black font-bold text-xl mb-7">{t("projectsTitle")}</p>
+      <p className="text-black font-bold text-xl mb-7">{t("title")}</p>
       <div className="flex flex-col space-y-6">
         {CARDS.map((project, index) => (
           <div key={index} className="flex flex-col p-5 shadow rounded">

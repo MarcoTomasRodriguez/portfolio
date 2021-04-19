@@ -35,7 +35,7 @@ function navigateToElementById(elementId: string) {
 }
 
 export default function Header(): JSX.Element {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("header");
   const [visibility, setVisibility] = useState(true);
 
   useEffect(() => {
@@ -62,27 +62,27 @@ export default function Header(): JSX.Element {
 
   const buttons = [
     {
-      title: t("headerAbout"),
+      title: t("about"),
       icon: (props) => <UserIcon {...props} />,
       onClick: () => navigateToElementById("about"),
     },
     {
-      title: t("headerExperience"),
+      title: t("experience"),
       icon: (props) => <BriefcaseIcon {...props} />,
       onClick: () => navigateToElementById("experience"),
     },
     {
-      title: t("headerProjects"),
+      title: t("projects"),
       icon: (props) => <CodeIcon {...props} />,
       onClick: () => navigateToElementById("projects"),
     },
     {
-      title: t("headerContact"),
+      title: t("contact"),
       icon: (props) => <MailIcon {...props} />,
       onClick: () => navigateToElementById("contact"),
     },
     {
-      title: t("headerChangeLanguage"),
+      title: t("changeLanguage"),
       icon: (props) => <TranslateIcon {...props} />,
     },
   ] as HeaderButton[];

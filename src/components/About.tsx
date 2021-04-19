@@ -1,9 +1,9 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { ArrowDownIcon } from "@heroicons/react/outline";
+import { useTranslation } from "react-i18next";
 
 export default function About(): JSX.Element {
-  const { t } = useTranslation("home");
+  const { t } = useTranslation("about");
 
   return (
     <div
