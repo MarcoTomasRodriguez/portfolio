@@ -1,16 +1,19 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { ArrowDownIcon } from "@heroicons/react/outline";
 
-function About(): JSX.Element {
+export default function About(): JSX.Element {
+  const { t } = useTranslation("home");
+
   return (
     <div
       id="about"
       className="relative grid place-content-center min-w-screen min-h-screen bg-primary"
     >
       <p className="text-center text-white font-bold text-2xl py-4 font-sans">
-        Hey! Welcome, I'm Marco Tomás Rodríguez
+        {t("introduction")}
       </p>
-      <p className="text-center text-white text-xl py-4">Software Engineer</p>
+      <p className="text-center text-white text-xl py-4">{t("profession")}</p>
       <button
         className="absolute text-white w-6 h-6 animate-bounce left-1/2 right-1/2 bottom-10 focus:outline-none"
         onClick={() => {
@@ -25,5 +28,3 @@ function About(): JSX.Element {
     </div>
   );
 }
-
-export default About;

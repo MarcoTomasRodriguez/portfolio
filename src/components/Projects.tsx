@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const CARD_EXAMPLE = {
   key: 1,
@@ -10,10 +11,12 @@ const CARD_EXAMPLE = {
 
 const CARDS = [CARD_EXAMPLE, CARD_EXAMPLE];
 
-function Projects(): JSX.Element {
+export default function Projects(): JSX.Element {
+  const { t } = useTranslation("home");
+
   return (
     <div id="projects" className="py-12 w-full h-full">
-      <p className="text-black font-bold text-xl mb-7">Projects</p>
+      <p className="text-black font-bold text-xl mb-7">{t("projectsTitle")}</p>
       <div className="flex flex-col space-y-6">
         {CARDS.map((project, index) => (
           <div key={index} className="flex flex-col p-5 shadow rounded">
@@ -25,5 +28,3 @@ function Projects(): JSX.Element {
     </div>
   );
 }
-
-export default Projects;

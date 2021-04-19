@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const CARD_EXAMPLE = {
   years: "2020 - 2021",
@@ -11,10 +12,12 @@ const CARD_EXAMPLE = {
 
 const CARDS = [CARD_EXAMPLE, CARD_EXAMPLE];
 
-function Experience(): JSX.Element {
+export default function Experience(): JSX.Element {
+  const { t } = useTranslation("home");
+
   return (
     <div id="experience" className="py-12 w-full h-full">
-      <p className="font-bold text-xl mb-7">Professional Experience</p>
+      <p className="font-bold text-xl mb-7">{t("experienceTitle")}</p>
       <div className="flex flex-col space-y-6">
         {CARDS.map((experience, index) => (
           <div
@@ -40,5 +43,3 @@ function Experience(): JSX.Element {
     </div>
   );
 }
-
-export default Experience;

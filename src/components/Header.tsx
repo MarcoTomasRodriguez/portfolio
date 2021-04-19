@@ -15,6 +15,7 @@ import {
   throttleTime,
 } from "rxjs/operators";
 import { fromEvent } from "rxjs";
+import { useTranslation } from "react-i18next";
 
 enum Direction {
   Up = "Up",
@@ -33,34 +34,8 @@ function navigateToElementById(elementId: string) {
   }
 }
 
-const BUTTONS = [
-  {
-    title: "About",
-    icon: (props) => <UserIcon {...props} />,
-    onClick: () => navigateToElementById("about"),
-  },
-  {
-    title: "Experience",
-    icon: (props) => <BriefcaseIcon {...props} />,
-    onClick: () => navigateToElementById("experience"),
-  },
-  {
-    title: "Projects",
-    icon: (props) => <CodeIcon {...props} />,
-    onClick: () => navigateToElementById("projects"),
-  },
-  {
-    title: "Contact Me",
-    icon: (props) => <MailIcon {...props} />,
-    onClick: () => navigateToElementById("contact"),
-  },
-  {
-    title: "Change Language",
-    icon: (props) => <TranslateIcon {...props} />,
-  },
-] as HeaderButton[];
-
-function Header(): JSX.Element {
+export default function Header(): JSX.Element {
+  const { t } = useTranslation("common");
   const [visibility, setVisibility] = useState(true);
 
   useEffect(() => {
@@ -85,13 +60,40 @@ function Header(): JSX.Element {
       .subscribe(() => setVisibility(() => false));
   }, []);
 
+  const buttons = [
+    {
+      title: t("headerAbout"),
+      icon: (props) => <UserIcon {...props} />,
+      onClick: () => navigateToElementById("about"),
+    },
+    {
+      title: t("headerExperience"),
+      icon: (props) => <BriefcaseIcon {...props} />,
+      onClick: () => navigateToElementById("experience"),
+    },
+    {
+      title: t("headerProjects"),
+      icon: (props) => <CodeIcon {...props} />,
+      onClick: () => navigateToElementById("projects"),
+    },
+    {
+      title: t("headerContact"),
+      icon: (props) => <MailIcon {...props} />,
+      onClick: () => navigateToElementById("contact"),
+    },
+    {
+      title: t("headerChangeLanguage"),
+      icon: (props) => <TranslateIcon {...props} />,
+    },
+  ] as HeaderButton[];
+
   return (
     <header
       className={`fixed flex flex-row space-x-8 sm:space-x-6 md:space-x-14 justify-center w-full z-50 bg-primary p-2 transition transform duration-200 ease-in ${
         visibility ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      {BUTTONS.map((button, index) => (
+      {buttons.map((button, index) => (
         <button
           key={index}
           className="flex flex-row text-sm text-white font-bold focus:outline-none p-3 rounded hover:bg-black hover:bg-opacity-10"
@@ -109,5 +111,3 @@ function Header(): JSX.Element {
     </header>
   );
 }
-
-export default Header;

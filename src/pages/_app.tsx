@@ -1,13 +1,13 @@
-import Header from "../components/Header";
+import { appWithTranslation } from "next-i18next";
+import nextI18NextConfig from "../../next-i18next.config.js";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
     <div>
-      <Header />
       <Component {...pageProps} />
     </div>
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp, nextI18NextConfig);

@@ -1,0 +1,21 @@
+{
+  "test": "Hallo!",
+  "introduction": "Hey! Welcome, I'm Marco Tomás Rodríguez",
+  "profession": "Software Engineer",
+  "contactTitle": "Contact Me",
+  "contactBody": "Reach me out by writing an email using the form or by any other method listed below.",
+  "contactName": "Enter your name",
+  "contactEmail": "Enter your email",
+  "contactMessage": "Enter your message",
+  "contactSend": "Send",
+  "experienceTitle": "Professional Experience",
+  "projectsTitle": "Projects",
+  "projectsGoToRepository": "Go to repository",
+  "Error|NameIsRequired": "Name is required.",
+  "Error|NameIsTooLong": "Name is too long.",
+  "Error|EmailIsRequired": "Email is required.",
+  "Error|EmailIsInvalid": "Email is invalid.",
+  "Error|MessageIsRequired": "Message is required.",
+  "Error|MessageIsTooShort": "Message is too short.",
+  "Error|MessageIsTooLong": "Message is too long."
+}
