@@ -1,8 +1,8 @@
 {
   "title": "Contactame",
   "body": "Comuníquese conmigo escribiendo un correo electrónico utilizando el formulario o cualquier otro método que se enumera a continuación.",
-  "namePlaceholder": "Ingrese su nombre",
-  "emailPlaceholder": "Ingrese su correo electronico",
-  "messagePlaceholder": "Ingrese su mensaje",
+  "nameLabel": "Ingrese su nombre",
+  "emailLabel": "Ingrese su correo electronico",
+  "messageLabel": "Ingrese su mensaje",
   "sendButton": "Enviar"
 }

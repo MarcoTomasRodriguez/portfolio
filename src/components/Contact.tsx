@@ -11,14 +11,11 @@ export default function Contact(): JSX.Element {
         <p className="text-xl text-center font-bold">{t("title")}</p>
         <p className="text-center text-sm text-opacity-90">{t("body")}</p>
         <div className="flex flex-row space-x-7 justify-center">
-          <a
-            className="w-6 h-6 focus:outline-none"
-            href="mailto:marcotomasrodriguez@gmail.com"
-          >
+          <a className="w-6 h-6" href="mailto:marcotomasrodriguez@gmail.com">
             <MailIcon />
           </a>
           <a
-            className="w-6 h-6 focus:outline-none"
+            className="w-6 h-6"
             href="https://github.com/MarcoTomasRodriguez"
             target="_blank"
           >
@@ -26,17 +23,30 @@ export default function Contact(): JSX.Element {
           </a>
         </div>
       </div>
-      <div className="p-4 col-span-5 md:col-span-2 flex flex-col space-y-6">
-        <input type="text" placeholder={t("namePlaceholder")} />
-        <input type="email" placeholder={t("emailPlaceholder")} />
-        <textarea placeholder={t("messagePlaceholder")} rows={9} />
+      <form
+        action="#"
+        method="POST"
+        className="p-4 col-span-5 md:col-span-2 flex flex-col space-y-6"
+      >
+        <div className="space-y-1">
+          <label htmlFor="name">{t("nameLabel")}</label>
+          <input name="name" type="text" placeholder="Aspen Collins" />
+        </div>
+        <div className="space-y-1">
+          <label htmlFor="email">{t("emailLabel")}</label>
+          <input name="email" type="email" placeholder="aspen@enterprise.com" />
+        </div>
+        <div className="space-y-1">
+          <label htmlFor="message">{t("messageLabel")}</label>
+          <textarea name="message" rows={9} placeholder="Hello Marco," />
+        </div>
         <button
           type="submit"
           className="flex items-center justify-center w-full p-2 text-sm font-bold rounded-md bg-blue-700 hover:bg-blue-800 text-white"
         >
           {t("sendButton")}
         </button>
-      </div>
+      </form>
     </div>
   );
 }

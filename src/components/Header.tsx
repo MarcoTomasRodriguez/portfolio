@@ -35,8 +35,9 @@ function navigateToElementById(elementId: string) {
 }
 
 export default function Header(): JSX.Element {
-  const { t } = useTranslation("header");
+  const { t, i18n } = useTranslation("header");
   const [visibility, setVisibility] = useState(true);
+  const [language, setLanguage] = useState("en");
 
   useEffect(() => {
     // window.scroll observable.
@@ -59,6 +60,10 @@ export default function Header(): JSX.Element {
       .pipe(filter((direction) => direction === Direction.Down))
       .subscribe(() => setVisibility(() => false));
   }, []);
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language]);
 
   const buttons = [
     {
@@ -84,6 +89,7 @@ export default function Header(): JSX.Element {
     {
       title: t("changeLanguage"),
       icon: (props) => <TranslateIcon {...props} />,
+      onClick: () => setLanguage("de"),
     },
   ] as HeaderButton[];
 
@@ -96,7 +102,7 @@ export default function Header(): JSX.Element {
       {buttons.map((button, index) => (
         <button
           key={index}
-          className="flex flex-row text-sm text-white font-bold focus:outline-none p-3 rounded hover:bg-black hover:bg-opacity-10"
+          className="flex flex-row text-sm text-white font-bold p-3 rounded hover:bg-black hover:bg-opacity-10"
           onClick={button.onClick}
         >
           <button.icon

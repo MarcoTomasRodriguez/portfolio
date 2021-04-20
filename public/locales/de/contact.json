@@ -1,8 +1,8 @@
 {
   "title": "Kontaktiere mich",
   "body": "Erreichen Sie mich, durch das Formular ausfüllen oder durch eine andere unten aufgeführten Methode.",
-  "namePlaceholder": "Name",
-  "emailPlaceholder": "E-Mail-Adresse",
-  "messagePlaceholder": "Nachrichtentext",
+  "nameLabel": "Name",
+  "emailLabel": "E-Mail-Adresse",
+  "messageLabel": "Nachrichtentext",
   "sendButton": "Senden"
 }
