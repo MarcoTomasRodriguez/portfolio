@@ -15,7 +15,7 @@ export default function About(): JSX.Element {
       </p>
       <p className="text-center text-white text-xl py-4">{t("profession")}</p>
       <button
-        className="absolute text-white w-6 h-6 animate-bounce left-1/2 right-1/2 bottom-10"
+        className="absolute text-white w-6 h-6 animate-bounce left-1/2 right-1/2 bottom-10 -ml-3"
         onClick={() => {
           const element = document.getElementById("experience");
           if (element) {
