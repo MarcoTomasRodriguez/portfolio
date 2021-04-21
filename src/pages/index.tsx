@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Header from "../components/Header";
 import About from "../components/About";
@@ -10,6 +11,10 @@ import projects from "../content/projects.json";
 export default function Home() {
   return (
     <>
+      <Head>
+        <title>Marco Tom&aacute;s Rodr&iacute;guez</title>
+        <meta name="description" content="Portfolio of Marco Tomas Rodriguez" />
+      </Head>
       <Header />
       <About />
       <div className="px-12 divide-y-2 divide-solid">

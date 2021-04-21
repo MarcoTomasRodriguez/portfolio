@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
 interface Experience {
@@ -28,11 +29,15 @@ export default function Experience({
             className="flex flex-col p-5 space-y-2 shadow rounded"
           >
             <div key={index} className="flex flex-row space-x-4">
-              <img
-                className="w-14 h-14 rounded my-1"
-                src={experience.logo}
-                alt={`${experience.company} logo`}
-              />
+              <div className="relative w-14 h-14 my-1">
+                <Image
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded"
+                  src={experience.logo}
+                  alt={`${experience.company} logo`}
+                />
+              </div>
               <div>
                 <p className="font-semibold">{experience.title}</p>
                 <p className="text-sm">{experience.company}</p>

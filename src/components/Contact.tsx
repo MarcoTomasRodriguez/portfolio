@@ -18,6 +18,7 @@ export default function Contact(): JSX.Element {
             className="w-6 h-6"
             href="https://github.com/MarcoTomasRodriguez"
             target="_blank"
+            rel="noopener"
           >
             <CodeIcon />
           </a>
