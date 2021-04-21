@@ -133,18 +133,20 @@ export default function Header(): JSX.Element {
             aria-hidden="true"
           />
         </Menu.Button>
-        <Menu.Items className="absolute origin-top-right right-0 mt-2 w-40 rounded-md bg-white shadow-lg divide-y divide-gray-100 focus:outline-none py-2">
-          {languages.map((lang, index) => (
-            <Menu.Item
-              key={index}
-              as="button"
-              className="w-full px-4 py-3 text-left text-sm text-gray-800 hover:bg-gray-200"
-              onClick={() => router.push("", "", { locale: lang.code })}
-            >
-              {lang.language}
-            </Menu.Item>
-          ))}
-        </Menu.Items>
+        {visibility && (
+          <Menu.Items className="absolute origin-top-right right-0 mt-2 w-40 rounded-md bg-white shadow-lg divide-y divide-gray-100 focus:outline-none py-2">
+            {languages.map((lang, index) => (
+              <Menu.Item
+                key={index}
+                as="button"
+                className="w-full px-4 py-3 text-left text-sm text-gray-800 hover:bg-gray-200"
+                onClick={() => router.push("", "", { locale: lang.code })}
+              >
+                {lang.language}
+              </Menu.Item>
+            ))}
+          </Menu.Items>
+        )}
       </Menu>
     </header>
   );

@@ -4,6 +4,8 @@ import About from "../components/About";
 import Contact from "../components/Contact";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
+import experience from "../content/experience.json";
+import projects from "../content/projects.json";
 
 export default function Home() {
   return (
@@ -11,22 +13,24 @@ export default function Home() {
       <Header />
       <About />
       <div className="px-12 divide-y-2 divide-solid">
-        <Experience />
-        <Projects />
+        <Experience experience={experience} />
+        <Projects projects={projects} />
         <Contact />
       </div>
     </>
   );
 }
 
-export const getStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, [
-      "about",
-      "contact",
-      "experience",
-      "header",
-      "projects",
-    ])),
-  },
-});
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        "about",
+        "contact",
+        "experience",
+        "header",
+        "projects",
+      ])),
+    },
+  };
+}
