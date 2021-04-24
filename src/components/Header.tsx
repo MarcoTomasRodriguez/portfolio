@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { fromEvent } from "rxjs";
 import {
@@ -23,11 +23,12 @@ enum Direction {
   Up = "Up",
   Down = "Down",
 }
-interface HeaderButton {
+
+type HeaderButton = {
   title: string;
   icon: (props: React.ComponentProps<"svg">) => JSX.Element;
   onClick: () => void;
-}
+};
 
 function navigateToElementById(elementId: string) {
   const element = document.getElementById(elementId);
@@ -36,7 +37,7 @@ function navigateToElementById(elementId: string) {
   }
 }
 
-export default function Header(): JSX.Element {
+export default function Header() {
   const router = useRouter();
 
   const { t } = useTranslation("header");

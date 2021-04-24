@@ -1,17 +1,16 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 
-interface Project {
+type Project = {
   title: string;
   repository: string;
   description: string;
-}
+};
 
-interface ProjectsProps {
+type ProjectsProps = {
   projects: Project[];
-}
+};
 
-export default function Projects({ projects }: ProjectsProps): JSX.Element {
+export default function Projects({ projects }: ProjectsProps) {
   const { t } = useTranslation("projects");
 
   return (

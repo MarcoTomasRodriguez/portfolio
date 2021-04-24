@@ -1,22 +1,19 @@
-import React from "react";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
-interface Experience {
+type Experience = {
   years: string;
   title: string;
   company: string;
   logo: string;
   description: string;
-}
+};
 
-interface ExperienceProps {
+type ExperienceProps = {
   experience: Experience[];
-}
+};
 
-export default function Experience({
-  experience,
-}: ExperienceProps): JSX.Element {
+export default function Experience({ experience }: ExperienceProps) {
   const { t } = useTranslation("experience");
 
   return (

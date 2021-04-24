@@ -1,9 +1,40 @@
-import React from "react";
+import { useState } from "react";
 import { CodeIcon, MailIcon } from "@heroicons/react/outline";
 import { useTranslation } from "react-i18next";
+import Joi from "joi";
+import { useForm } from "react-hook-form";
+import { joiResolver } from "@hookform/resolvers/joi";
+import InputField from "./forms/InputField";
+import TextareaField from "./forms/TextareaField";
+import StatusButton, { RequestStatus } from "./forms/StatusButton";
+import { sendEmail } from "../libs/mailer";
 
-export default function Contact(): JSX.Element {
+const emailFormSchema = Joi.object({
+  name: Joi.string().alphanum().min(2).max(64).required(),
+  email: Joi.string()
+    .email({ tlds: { allow: false } })
+    .required(),
+  message: Joi.string().min(64).max(2048).required(),
+});
+
+export default function Contact() {
   const { t } = useTranslation("contact");
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: joiResolver(emailFormSchema) });
+
+  const [emailStatus, setEmailStatus] = useState(RequestStatus.None);
+
+  const onSubmit = (data) => {
+    setEmailStatus(() => RequestStatus.Pending);
+
+    sendEmail()
+      .then(() => setEmailStatus(() => RequestStatus.Success))
+      .catch(() => setEmailStatus(() => RequestStatus.Failure));
+  };
 
   return (
     <div id="contact" className="w-full h-full py-12 grid grid-cols-5">
@@ -25,28 +56,38 @@ export default function Contact(): JSX.Element {
         </div>
       </div>
       <form
-        action="#"
-        method="POST"
-        className="p-4 col-span-5 md:col-span-2 flex flex-col space-y-6"
+        className="flex flex-col p-4 col-span-5 md:col-span-2 space-y-6"
+        onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="space-y-1">
-          <label htmlFor="name">{t("nameLabel")}</label>
-          <input name="name" type="text" placeholder="Aspen Collins" />
-        </div>
-        <div className="space-y-1">
-          <label htmlFor="email">{t("emailLabel")}</label>
-          <input name="email" type="email" placeholder="aspen@enterprise.com" />
-        </div>
-        <div className="space-y-1">
-          <label htmlFor="message">{t("messageLabel")}</label>
-          <textarea name="message" rows={9} placeholder="Hello Marco," />
-        </div>
-        <button
+        <InputField
+          type="text"
+          placeholder="Aspen Collins"
+          error={errors?.name}
+          label={t("nameLabel")}
+          {...register("name")}
+        />
+        <InputField
+          type="email"
+          placeholder="aspen@enterprise.com"
+          error={errors?.email}
+          label={t("emailLabel")}
+          {...register("email")}
+        />
+        <TextareaField
+          rows={9}
+          placeholder="Hello Marco,"
+          error={errors?.message}
+          label={t("messageLabel")}
+          {...register("message")}
+        />
+        <StatusButton
           type="submit"
-          className="flex items-center justify-center w-full p-2 text-sm font-bold rounded-md bg-blue-700 hover:bg-blue-800 text-white"
-        >
-          {t("sendButton")}
-        </button>
+          status={emailStatus}
+          defaultText="Send"
+          pendingText="Sending"
+          successText="Sent"
+          failureText="Retry"
+        />
       </form>
     </div>
   );

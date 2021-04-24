@@ -28,7 +28,7 @@ html {
   [multiple],
   textarea,
   select {
-    @apply w-full border-gray-300 rounded-md shadow-sm focus:border-blue-600 focus:ring-blue-600 text-sm;
+    @apply w-full rounded-md shadow-sm  text-sm;
   }
 
   label {
@@ -37,6 +37,36 @@ html {
 
   a,
   button {
-    @apply focus:outline-none;
+    @apply text-sm font-bold focus:outline-none;
+  }
+}
+
+@layer components {
+  .input--default {
+    @apply border-gray-300 focus:border-blue-600 focus:ring-blue-600;
+  }
+
+  .input--error {
+    @apply border-red-600 focus:border-red-600 focus:ring-red-600;
+  }
+
+  .button {
+    @apply flex items-center justify-center p-2 rounded-md;
+  }
+
+  .button--blue {
+    @apply text-white bg-blue-700 hover:bg-blue-800;
+  }
+
+  .button--yellow {
+    @apply text-white bg-yellow-500 hover:bg-yellow-600;
+  }
+
+  .button--green {
+    @apply text-white bg-green-500 hover:bg-green-600;
+  }
+
+  .button--red {
+    @apply text-white bg-red-500 hover:bg-red-600;
   }
 }
