@@ -1,26 +1,41 @@
 import { ArrowDownIcon } from "@heroicons/react/outline";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import TypewriterAnimation from "./animations/TypewriterAnimation";
 
 export default function About() {
+  const [displayProfession, setDisplayProfession] = useState(false);
+
   const { t } = useTranslation("about");
+
+  useEffect(() => {
+    setTimeout(() => setDisplayProfession(() => true), 3000);
+  }, []);
+
+  const scrollToExperience = () => {
+    const element = document.getElementById("experience");
+
+    if (element) {
+      element.scrollIntoView();
+    }
+  };
 
   return (
     <div
       id="about"
-      className="relative grid place-content-center min-w-screen min-h-screen bg-primary p-12"
+      className="relative min-w-screen min-h-screen grid place-content-center bg-primary text-white text-center p-6 space-y-8"
     >
-      <p className="text-center text-2xl text-white font-bold font-sans py-4">
-        {t("introduction")}
-      </p>
-      <p className="text-center text-xl text-white py-4">{t("profession")}</p>
+      <TypewriterAnimation
+        className="text-2xl font-bold"
+        text={t("introduction")}
+      />
+
+      {displayProfession && (
+        <TypewriterAnimation className="text-xl" text={t("profession")} />
+      )}
       <button
-        className="absolute w-6 h-6 text-white animate-bounce left-1/2 right-1/2 bottom-10 -ml-3"
-        onClick={() => {
-          const element = document.getElementById("experience");
-          if (element) {
-            element.scrollIntoView();
-          }
-        }}
+        className="absolute w-6 h-6 left-1/2 right-1/2 bottom-10 -ml-3 animate-bounce"
+        onClick={scrollToExperience}
       >
         <ArrowDownIcon />
       </button>

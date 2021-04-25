@@ -1,4 +1,5 @@
 module.exports = {
+  mode: "jit",
   purge: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
@@ -8,6 +9,15 @@ module.exports = {
     extend: {
       colors: {
         primary: "#3f51b5",
+      },
+      animation: {
+        blink: "blink 400ms linear infinite alternate",
+      },
+      keyframes: {
+        blink: {
+          "0%": { opacity: 0 },
+          "50%": { opacity: 1 },
+        },
       },
     },
     fontFamily: {
