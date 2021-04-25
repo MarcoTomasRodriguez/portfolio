@@ -7,7 +7,7 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import InputField from "./forms/InputField";
 import TextareaField from "./forms/TextareaField";
 import StatusButton, { RequestStatus } from "./forms/StatusButton";
-import { sendEmail } from "../libs/mailer";
+import { EmailInformation, sendEmail } from "../libs/mailer";
 
 const emailFormSchema = Joi.object({
   name: Joi.string().alphanum().min(2).max(64).required(),
@@ -28,10 +28,10 @@ export default function Contact() {
 
   const [emailStatus, setEmailStatus] = useState(RequestStatus.None);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: EmailInformation) => {
     setEmailStatus(() => RequestStatus.Pending);
 
-    sendEmail()
+    sendEmail(data)
       .then(() => setEmailStatus(() => RequestStatus.Success))
       .catch(() => setEmailStatus(() => RequestStatus.Failure));
   };

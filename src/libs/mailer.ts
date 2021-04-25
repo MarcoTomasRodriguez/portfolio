@@ -1,8 +1,25 @@
-export function sendEmail(): Promise<void> {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (Math.random() < 0.5) resolve();
-      else reject();
-    }, Math.random() * 2000);
+export type EmailInformation = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+export async function sendEmail({
+  name,
+  email,
+  message,
+}: EmailInformation): Promise<void> {
+  const response = await fetch("https://formspree.io/f/myybqbdp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name,
+      _replyto: email,
+      message,
+    }),
   });
+
+  if (!response.ok) {
+    throw new Error();
+  }
 }
