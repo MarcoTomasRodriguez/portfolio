@@ -1,6 +1,6 @@
-import { ArrowDownIcon } from "@heroicons/react/outline";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ArrowDownIcon } from "@heroicons/react/outline";
 import TypewriterAnimation from "./animations/TypewriterAnimation";
 
 export default function About() {
@@ -9,7 +9,10 @@ export default function About() {
   const { t } = useTranslation("about");
 
   useEffect(() => {
-    setTimeout(() => setDisplayProfession(() => true), 3000);
+    setTimeout(
+      () => setDisplayProfession(true),
+      t("introduction").length * 75 + 100
+    );
   }, []);
 
   const scrollToExperience = () => {

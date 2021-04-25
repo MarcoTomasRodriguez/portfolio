@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 import { fromEvent } from "rxjs";
-import {
-  BriefcaseIcon,
-  CodeIcon,
-  MailIcon,
-  TranslateIcon,
-  UserIcon,
-} from "@heroicons/react/solid";
 import { Menu } from "@headlessui/react";
 import {
   distinctUntilChanged,
@@ -17,7 +11,13 @@ import {
   share,
   throttleTime,
 } from "rxjs/operators";
-import { useTranslation } from "react-i18next";
+import {
+  BriefcaseIcon,
+  CodeIcon,
+  MailIcon,
+  TranslateIcon,
+  UserIcon,
+} from "@heroicons/react/solid";
 
 enum Direction {
   Up = "Up",
