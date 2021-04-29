@@ -105,14 +105,14 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed flex flex-row space-x-8 sm:space-x-6 md:space-x-14 justify-center w-full z-50 bg-primary p-2 transition transform duration-200 ease-in ${
+      className={`fixed flex flex-row space-x-8 sm:space-x-6 md:space-x-7 lg:space-x-14 justify-center w-full z-50 bg-primary p-2 transition transform duration-200 ease-in ${
         visibility ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       {buttons.map((button, index) => (
         <button
           key={index}
-          className="flex flex-row text-sm text-white font-bold p-3 rounded hover:bg-black hover:bg-opacity-10"
+          className="flex flex-row text-sm text-white font-bold p-2 rounded hover:bg-black hover:bg-opacity-10"
           onClick={button.onClick}
         >
           <button.icon
@@ -125,7 +125,7 @@ export default function Header() {
         </button>
       ))}
       <Menu as="div" className="relative">
-        <Menu.Button className="inline-flex justify-center w-full rounded-md text-sm font-bold text-white p-3 hover:bg-black hover:bg-opacity-10 focus:outline-none">
+        <Menu.Button className="inline-flex justify-center w-full rounded-md text-sm font-bold text-white p-2 hover:bg-black hover:bg-opacity-10 focus:outline-none">
           <p className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">
             {t("changeLanguage")}
           </p>
