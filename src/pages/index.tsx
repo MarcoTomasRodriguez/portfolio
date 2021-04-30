@@ -27,14 +27,14 @@ export default function Home({ experience, projects }) {
 }
 
 export async function getStaticProps({ locale }) {
-  const contentDirectory = path.join(process.cwd(), `public/content/${locale}`);
+  const localesDirectory = path.join(process.cwd(), `public/locales/${locale}`);
 
-  const experiencePath = path.join(contentDirectory, "experience.json");
+  const experiencePath = path.join(localesDirectory, "experience-content.json");
   const experienceRaw = fs.existsSync(experiencePath)
     ? fs.readFileSync(experiencePath, "utf-8")
     : null;
 
-  const projectsPath = path.join(contentDirectory, "projects.json");
+  const projectsPath = path.join(localesDirectory, "projects-content.json");
   const projectsRaw = fs.existsSync(projectsPath)
     ? fs.readFileSync(projectsPath, "utf-8")
     : null;
