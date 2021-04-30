@@ -1,14 +1,20 @@
 import fs from "fs";
 import path from "path";
 import Head from "next/head";
+import aos from "aos";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Header from "../components/Header";
 import About from "../components/About";
 import Contact from "../components/Contact";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
+import { useEffect } from "react";
 
 export default function Home({ experience, projects }) {
+  useEffect(() => {
+    aos.init();
+  }, []);
+
   return (
     <>
       <Head>

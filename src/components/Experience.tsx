@@ -23,6 +23,7 @@ export default function Experience({ experience }: ExperienceProps) {
         {experience.map((experience, index) => (
           <div
             key={index}
+            data-aos="fade-right"
             className="flex flex-col p-5 space-y-2 shadow rounded"
           >
             <div key={index} className="flex flex-row space-x-4">

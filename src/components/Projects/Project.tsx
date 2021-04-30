@@ -18,7 +18,11 @@ export function Project({
   ...props
 }: ProjectProps) {
   return (
-    <div className="flex flex-col p-5 shadow rounded space-y-2" {...props}>
+    <div
+      data-aos="fade-right"
+      className="flex flex-col p-5 shadow rounded space-y-2"
+      {...props}
+    >
       <div className="divide-solid divide-y">
         <div className="pb-3 space-y-2">
           <p className="text-black font-bold">{title}</p>
