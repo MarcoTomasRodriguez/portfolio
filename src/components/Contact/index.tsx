@@ -4,10 +4,10 @@ import { useTranslation } from "react-i18next";
 import Joi from "joi";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import InputField from "./forms/InputField";
-import TextareaField from "./forms/TextareaField";
-import StatusButton, { RequestStatus } from "./forms/StatusButton";
-import { EmailInformation, sendEmail } from "../libs/mailer";
+import InputField from "../forms/InputField";
+import TextareaField from "../forms/TextareaField";
+import StatusButton, { RequestStatus } from "../forms/StatusButton";
+import { EmailInformation, sendEmail } from "../../libs/mailer";
 
 const emailFormSchema = Joi.object({
   name: Joi.string().alphanum().min(2).max(64).required(),

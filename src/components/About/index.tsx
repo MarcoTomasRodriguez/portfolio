@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowDownIcon } from "@heroicons/react/outline";
-import TypewriterAnimation from "./animations/TypewriterAnimation";
+import TypewriterAnimation from "../animations/TypewriterAnimation";
 
 export default function About() {
   const [displayProfession, setDisplayProfession] = useState(false);
