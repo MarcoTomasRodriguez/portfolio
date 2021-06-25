@@ -125,7 +125,7 @@ export default function Header() {
           </p>
         </button>
       ))}
-      <Menu as="div" className="relative">
+      <Menu as="div" className="relative" aria-label="Change language">
         <Menu.Button className="inline-flex justify-center w-full rounded-md text-sm text-white p-2 hover:bg-black hover:bg-opacity-10 focus:outline-none">
           <p className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">
             {t("changeLanguage")}
