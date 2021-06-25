@@ -39,6 +39,7 @@ export default function About() {
       <button
         className="absolute w-6 h-6 left-1/2 right-1/2 bottom-10 -ml-3 animate-bounce"
         onClick={scrollToExperience}
+        aria-label="Scroll to experience"
       >
         <ArrowDownIcon />
       </button>

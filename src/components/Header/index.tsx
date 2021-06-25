@@ -114,6 +114,7 @@ export default function Header() {
           key={index}
           className="flex flex-row text-sm text-white font-bold p-2 rounded hover:bg-black hover:bg-opacity-10"
           onClick={button.onClick}
+          aria-label={`Scroll to ${button.title}`}
         >
           <button.icon
             className="visible sm:invisible h-5 w-5 sm:h-0 sm:w-0"

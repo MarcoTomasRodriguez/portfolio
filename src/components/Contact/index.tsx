@@ -49,7 +49,7 @@ export default function Contact() {
         <p className="text-xl text-center font-bold">{t("title")}</p>
         <p className="text-center text-sm text-opacity-90">{t("body")}</p>
         <div className="flex flex-row space-x-7 justify-center">
-          <a className="w-6 h-6" href="mailto:marcotomasrodriguez@gmail.com">
+          <a className="w-6 h-6" href="mailto:marcotomasrodriguez@gmail.com" aria-label="Send email">
             <MailIcon />
           </a>
           <a
@@ -57,6 +57,7 @@ export default function Contact() {
             href="https://github.com/MarcoTomasRodriguez"
             target="_blank"
             rel="noopener"
+            aria-label="Visit GitHub profile"
           >
             <CodeIcon />
           </a>
@@ -94,6 +95,7 @@ export default function Contact() {
           pendingText="Sending"
           successText="Sent"
           failureText="Retry"
+          aria-label="Submit contact form"
         />
       </form>
     </div>
