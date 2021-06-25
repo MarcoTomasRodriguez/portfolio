@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
-import { interval, Observable } from "rxjs";
+import { interval } from "rxjs";
 import { map, take } from "rxjs/operators";
 
-type TypewriterAnimationProps = React.ComponentProps<"p"> & {
+type TypewriterProps = React.ComponentProps<"p"> & {
   text: string;
 };
 
-export default function TypewriterAnimation({
-  text,
-  ...props
-}: TypewriterAnimationProps) {
+export default function Typewriter({ text, ...props }: TypewriterProps) {
   const [currentText, setCurrentText] = useState("");
   const [running, setRunning] = useState(true);
 
   useEffect(() => {
-    interval(75)
+    interval(60)
       .pipe(
         map((index) => text.substr(0, index + 1)),
         take(text.length)

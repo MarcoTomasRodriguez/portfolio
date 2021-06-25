@@ -5,7 +5,6 @@
 
 /* Roboto font */
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import "aos/dist/aos.css";
 
 /* Smooth scroll */
 html {
@@ -30,7 +29,7 @@ html {
   [multiple],
   textarea,
   select {
-    @apply w-full rounded-md shadow-sm  text-sm;
+    @apply w-full rounded-md shadow-sm text-sm;
   }
 
   label {
@@ -44,31 +43,31 @@ html {
 }
 
 @layer components {
+  .button {
+    @apply flex items-center justify-center p-2 rounded-md text-white;
+  }
+
+  .button--blue {
+    @apply bg-blue-700 hover:bg-blue-800;
+  }
+
+  .button--yellow {
+    @apply bg-yellow-500 hover:bg-yellow-600;
+  }
+
+  .button--green {
+    @apply bg-green-500 hover:bg-green-600;
+  }
+
+  .button--red {
+    @apply bg-red-500 hover:bg-red-600;
+  }
+
   .input--default {
     @apply border-gray-300 focus:border-blue-600 focus:ring-blue-600;
   }
 
   .input--error {
     @apply border-red-600 focus:border-red-600 focus:ring-red-600;
-  }
-
-  .button {
-    @apply flex items-center justify-center p-2 rounded-md;
-  }
-
-  .button--blue {
-    @apply text-white bg-blue-700 hover:bg-blue-800;
-  }
-
-  .button--yellow {
-    @apply text-white bg-yellow-500 hover:bg-yellow-600;
-  }
-
-  .button--green {
-    @apply text-white bg-green-500 hover:bg-green-600;
-  }
-
-  .button--red {
-    @apply text-white bg-red-500 hover:bg-red-600;
   }
 }

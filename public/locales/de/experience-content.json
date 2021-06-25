@@ -4,13 +4,31 @@
     "title": "Software Engineer",
     "company": "BlueSensor",
     "logo": "/img/bluesensor-logo.png",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a rutrum tortor, ut fermentum ligula. Ut consectetur convallis justo, nec hendrerit orci egestas vel. Aenean cursus efficitur elit, rutrum imperdiet lorem pharetra et. Maecenas quis sollicitudin felis. Donec vel nulla vel dolor ullamcorper dignissim. Nunc dictum quis sapien ut viverra. Suspendisse elit orci, tincidunt sit amet purus at, tempor iaculis enim. In hac habitasse platea dictumst."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a rutrum tortor, ut fermentum ligula. Ut consectetur convallis justo, nec hendrerit orci egestas vel. Aenean cursus efficitur elit, rutrum imperdiet lorem pharetra et. Maecenas quis sollicitudin felis. Donec vel nulla vel dolor ullamcorper dignissim. Nunc dictum quis sapien ut viverra. Suspendisse elit orci, tincidunt sit amet purus at, tempor iaculis enim. In hac habitasse platea dictumst.",
+    "badges": [
+      { "text": "Spring Boot", "color": "green" },
+      { "text": "Java", "color": "red" },
+      { "text": "Kotlin", "color": "blue" },
+      { "text": "Scala", "color": "red"},
+      { "text": "React.js", "color": "blue" },
+      { "text": "Next.js", "color": "gray" },
+      { "text": "PostgreSQL", "color": "blue" }
+    ]
   },
   {
     "years": "2019 - Present",
     "title": "Software Consultant",
     "company": "Independent",
     "logo": "/img/default-company.png",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a rutrum tortor, ut fermentum ligula. Ut consectetur convallis justo, nec hendrerit orci egestas vel. Aenean cursus efficitur elit, rutrum imperdiet lorem pharetra et. Maecenas quis sollicitudin felis. Donec vel nulla vel dolor ullamcorper dignissim. Nunc dictum quis sapien ut viverra. Suspendisse elit orci, tincidunt sit amet purus at, tempor iaculis enim. In hac habitasse platea dictumst."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a rutrum tortor, ut fermentum ligula. Ut consectetur convallis justo, nec hendrerit orci egestas vel. Aenean cursus efficitur elit, rutrum imperdiet lorem pharetra et. Maecenas quis sollicitudin felis. Donec vel nulla vel dolor ullamcorper dignissim. Nunc dictum quis sapien ut viverra. Suspendisse elit orci, tincidunt sit amet purus at, tempor iaculis enim. In hac habitasse platea dictumst.",
+    "badges": [
+      { "text": "Spring Boot", "color": "green" },
+      { "text": "Java", "color": "red" },
+      { "text": "Kotlin", "color": "blue" },
+      { "text": "Scala", "color": "red"},
+      { "text": "React.js", "color": "blue" },
+      { "text": "Next.js", "color": "gray" },
+      { "text": "PostgreSQL", "color": "blue" }
+    ]
   }
 ]

@@ -19,7 +19,6 @@ export function Project({
 }: ProjectProps) {
   return (
     <div
-      data-aos="fade-right"
       className="flex flex-col p-5 shadow rounded space-y-2"
       {...props}
     >

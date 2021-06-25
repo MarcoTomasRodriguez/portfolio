@@ -1,12 +1,14 @@
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import { Badge, BadgeProps } from "../Badge"
 
 type Experience = {
   years: string;
   title: string;
   company: string;
-  logo: string;
   description: string;
+  logo?: string;
+  badges?: BadgeProps[];
 };
 
 type ExperienceProps = {
@@ -23,7 +25,6 @@ export default function Experience({ experience }: ExperienceProps) {
         {experience.map((experience, index) => (
           <div
             key={index}
-            data-aos="fade-right"
             className="flex flex-col p-5 space-y-2 shadow rounded"
           >
             <div key={index} className="flex flex-row space-x-4">
@@ -32,7 +33,7 @@ export default function Experience({ experience }: ExperienceProps) {
                   layout="fill"
                   objectFit="cover"
                   className="rounded"
-                  src={experience.logo}
+                  src={experience.logo || "/img/default-company.png"}
                   alt={`${experience.company} logo`}
                 />
               </div>
@@ -43,6 +44,13 @@ export default function Experience({ experience }: ExperienceProps) {
               </div>
             </div>
             <p className="text-sm">{experience.description}</p>
+            {experience.badges && (
+            <div className="flex flex-row -mt-1 space-x-1">
+              {experience.badges.map((badge, index) => (
+                <Badge key={index} text={badge.text} color={badge.color} />
+              ))}
+            </div>
+          )}
           </div>
         ))}
       </div>

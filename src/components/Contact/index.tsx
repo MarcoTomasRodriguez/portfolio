@@ -1,7 +1,7 @@
+import Joi from "joi";
 import { useState } from "react";
 import { CodeIcon, MailIcon } from "@heroicons/react/outline";
 import { useTranslation } from "react-i18next";
-import Joi from "joi";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import InputField from "../forms/InputField";
@@ -10,11 +10,18 @@ import StatusButton, { RequestStatus } from "../forms/StatusButton";
 import { EmailInformation, sendEmail } from "../../libs/mailer";
 
 const emailFormSchema = Joi.object({
-  name: Joi.string().alphanum().min(2).max(64).required(),
+  name: Joi.string()
+    .alphanum()
+    .min(2)
+    .max(64)
+    .required(),
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .required(),
-  message: Joi.string().min(64).max(2048).required(),
+  message: Joi.string()
+    .min(64)
+    .max(2048)
+    .required(),
 });
 
 export default function Contact() {
