@@ -1,8 +1,8 @@
 {
   "title": "Contact Me",
   "body": "Reach me out by writing an email using the form or by any other method listed below.",
-  "nameLabel": "Enter your name",
-  "emailLabel": "Enter your email",
-  "messageLabel": "Enter your message",
+  "nameLabel": "Name",
+  "emailLabel": "Email",
+  "messageLabel": "Message",
   "sendButton": "Send"
 }

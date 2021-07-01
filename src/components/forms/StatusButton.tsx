@@ -39,7 +39,7 @@ export default function StatusButton({
 
   return (
     <button
-      className={`w-full button ${resolveButtonStyles()}`}
+      className={`w-full font-medium button ${resolveButtonStyles()}`}
       disabled={
         status == RequestStatus.Pending || status == RequestStatus.Success
       }
