@@ -45,7 +45,7 @@ export default function Experience({ experience }: ExperienceProps) {
             </div>
             <p className="text-sm">{experience.description}</p>
             {experience.badges && (
-            <div className="flex flex-row -mt-1 space-x-1">
+            <div className="flex flex-row flex-wrap -mt-1">
               {experience.badges.map((badge, index) => (
                 <Badge key={index} text={badge.text} color={badge.color} />
               ))}

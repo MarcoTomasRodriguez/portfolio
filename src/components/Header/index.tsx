@@ -24,18 +24,11 @@ enum Direction {
   Down = "Down",
 }
 
-type HeaderButton = {
+type HeaderLink = {
   title: string;
   icon: (props: React.ComponentProps<"svg">) => JSX.Element;
-  onClick: () => void;
+  url: string;
 };
-
-function navigateToElementById(elementId: string) {
-  const element = document.getElementById(elementId);
-  if (element) {
-    element.scrollIntoView();
-  }
-}
 
 export default function Header() {
   const router = useRouter();
@@ -65,42 +58,17 @@ export default function Header() {
       .subscribe(() => setVisibility(() => false));
   }, []);
 
-  const buttons = [
-    {
-      title: t("about"),
-      icon: (props) => <UserIcon {...props} />,
-      onClick: () => navigateToElementById("about"),
-    },
-    {
-      title: t("experience"),
-      icon: (props) => <BriefcaseIcon {...props} />,
-      onClick: () => navigateToElementById("experience"),
-    },
-    {
-      title: t("projects"),
-      icon: (props) => <CodeIcon {...props} />,
-      onClick: () => navigateToElementById("projects"),
-    },
-    {
-      title: t("contact"),
-      icon: (props) => <MailIcon {...props} />,
-      onClick: () => navigateToElementById("contact"),
-    },
-  ] as HeaderButton[];
+  const links: HeaderLink[] = [
+    { title: t("about"), icon: (props) => <UserIcon {...props} />, url: "#about" },
+    { title: t("experience"), icon: (props) => <BriefcaseIcon {...props} />, url: "#experience" },
+    { title: t("projects"), icon: (props) => <CodeIcon {...props} />, url: "#projects" },
+    { title: t("contact"), icon: (props) => <MailIcon {...props} />, url: "#contact" },
+  ];
 
   const languages = [
-    {
-      language: "English",
-      code: "en",
-    },
-    {
-      language: "Deutsch",
-      code: "de",
-    },
-    {
-      language: "Español",
-      code: "es",
-    },
+    { language: "English", code: "en" },
+    { language: "Deutsch", code: "de" },
+    { language: "Español", code: "es" },
   ];
 
   return (
@@ -109,31 +77,16 @@ export default function Header() {
         visibility ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      {buttons.map((button, index) => (
-        <button
-          key={index}
-          className="flex flex-row text-sm text-white p-2 rounded hover:bg-black hover:bg-opacity-10"
-          onClick={button.onClick}
-          aria-label={`Scroll to ${button.title}`}
-        >
-          <button.icon
-            className="visible sm:invisible h-5 w-5 sm:h-0 sm:w-0"
-            viewBox="0 0 20 20"
-          />
-          <p className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">
-            {button.title}
-          </p>
-        </button>
+      {links.map((link, index) => (
+        <a key={index} href={link.url} aria-label={`Scroll to ${link.title}`} className="flex flex-row text-sm text-white p-2 rounded hover:bg-black hover:bg-opacity-10">
+          <link.icon className="visible sm:invisible h-5 w-5 sm:h-0 sm:w-0" viewBox="0 0 20 20" />
+          <p className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">{link.title}</p>
+        </a>
       ))}
       <Menu as="div" className="relative">
         <Menu.Button className="inline-flex justify-center w-full rounded-md text-sm text-white p-2 hover:bg-black hover:bg-opacity-10 focus:outline-none" aria-label="Change language">
-          <p className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">
-            {t("changeLanguage")}
-          </p>
-          <TranslateIcon
-            className="visible sm:invisible h-5 w-5 sm:h-0 sm:w-0 -mr-1 ml-2 sm:mr-0 sm:ml-0"
-            aria-hidden="true"
-          />
+          <p className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">{t("changeLanguage")}</p>
+          <TranslateIcon aria-hidden="true" className="visible sm:invisible h-5 w-5 sm:h-0 sm:w-0 -mr-1 ml-2 sm:mr-0 sm:ml-0" />
         </Menu.Button>
         {visibility && (
           <Menu.Items className="absolute origin-top-right right-0 mt-2 w-40 rounded-md bg-white shadow-lg divide-y divide-gray-100 focus:outline-none py-2">
