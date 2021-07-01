@@ -20,7 +20,7 @@ export default function Experience({ experience }: ExperienceProps) {
 
   return (
     <div id="experience" className="py-12 w-full h-full">
-      <p className="font-medium text-xl mb-7">{t("title")}</p>
+      <p className="font-bold text-xl mb-7">{t("title")}</p>
       <div className="flex flex-col space-y-6">
         {experience.map((experience, index) => (
           <div
@@ -38,7 +38,7 @@ export default function Experience({ experience }: ExperienceProps) {
                 />
               </div>
               <div>
-                <p className="font-medium">{experience.title}</p>
+                <p className="font-bold">{experience.title}</p>
                 <p className="text-sm">{experience.company}</p>
                 <p className="text-sm opacity-80">{experience.years}</p>
               </div>

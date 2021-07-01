@@ -29,7 +29,7 @@ export default function About() {
       className="relative min-w-screen min-h-screen grid place-content-center bg-primary text-white text-center p-6 space-y-8"
     >
       <Typewriter
-        className="text-2xl font-medium"
+        className="text-2xl font-bold"
         text={t("introduction")}
       />
 

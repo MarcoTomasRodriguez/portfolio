@@ -24,7 +24,7 @@ export function Project({
     >
       <div className="divide-solid divide-y">
         <div className="pb-3 space-y-2">
-          <p className="text-black font-medium">{title}</p>
+          <p className="text-black font-bold">{title}</p>
           <p className="text-black text-sm">{description}</p>
           {badges && (
             <div className="flex flex-row -mt-1 space-x-1">
@@ -40,7 +40,6 @@ export function Project({
               {websiteUrl && (
                 <a
                   href={websiteUrl}
-                  className="font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -50,7 +49,6 @@ export function Project({
               {repositoryUrl && (
                 <a
                   href={repositoryUrl}
-                  className="font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

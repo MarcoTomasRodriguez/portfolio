@@ -112,7 +112,7 @@ export default function Header() {
       {buttons.map((button, index) => (
         <button
           key={index}
-          className="flex flex-row text-sm text-white font-medium p-2 rounded hover:bg-black hover:bg-opacity-10"
+          className="flex flex-row text-sm text-white p-2 rounded hover:bg-black hover:bg-opacity-10"
           onClick={button.onClick}
           aria-label={`Scroll to ${button.title}`}
         >
@@ -126,7 +126,7 @@ export default function Header() {
         </button>
       ))}
       <Menu as="div" className="relative">
-        <Menu.Button className="inline-flex justify-center w-full rounded-md text-sm text-white font-medium p-2 hover:bg-black hover:bg-opacity-10 focus:outline-none" aria-label="Change language">
+        <Menu.Button className="inline-flex justify-center w-full rounded-md text-sm text-white p-2 hover:bg-black hover:bg-opacity-10 focus:outline-none" aria-label="Change language">
           <p className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">
             {t("changeLanguage")}
           </p>
@@ -141,7 +141,7 @@ export default function Header() {
               <Menu.Item
                 key={index}
                 as="button"
-                className="w-full px-4 py-3 text-left text-sm text-gray-800 font-medium hover:bg-gray-200"
+                className="w-full px-4 py-3 text-left text-sm text-gray-800 hover:bg-gray-200"
                 onClick={() => router.push("", "", { locale: lang.code })}
               >
                 {lang.language}

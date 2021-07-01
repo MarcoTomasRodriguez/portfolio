@@ -46,7 +46,7 @@ export default function Contact() {
   return (
     <div id="contact" className="w-full h-full py-12 grid grid-cols-5">
       <div className="h-full p-8 col-span-5 md:col-span-3 flex flex-col space-y-8 justify-center">
-        <p className="text-xl text-center font-medium">{t("title")}</p>
+        <p className="text-xl font-bold text-center">{t("title")}</p>
         <p className="text-center text-sm text-opacity-90">{t("body")}</p>
         <div className="flex flex-row space-x-7 justify-center">
           <a className="w-6 h-6" href="mailto:marcotomasrodriguez@gmail.com" aria-label="Send email">
