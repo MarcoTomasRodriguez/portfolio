@@ -16,12 +16,12 @@ export default function Typewriter({ text, ...props }: TypewriterProps) {
         map((index) => text.substr(0, index + 1)),
         take(text.length)
       )
-      .subscribe(
-        (text) => setCurrentText(() => text),
-        () => {},
-        () => setRunning(() => false)
-      );
-  }, []);
+      .subscribe({
+        next: (text) => setCurrentText(() => text),
+        error: () => {},
+        complete: () => setRunning(() => false),
+      });
+  }, [text]);
 
   return (
     <p {...props}>

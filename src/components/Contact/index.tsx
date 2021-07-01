@@ -44,9 +44,9 @@ export default function Contact() {
   };
 
   return (
-    <div id="contact" className="w-full h-full py-12 grid grid-cols-5">
+    <section id="contact" className="w-full h-full py-12 grid grid-cols-5">
       <div className="h-full p-8 col-span-5 md:col-span-3 flex flex-col space-y-8 justify-center">
-        <p className="text-xl font-bold text-center">{t("title")}</p>
+        <h1 className="text-xl font-bold text-center">{t("title")}</h1>
         <p className="text-center text-sm text-opacity-90">{t("body")}</p>
         <div className="flex flex-row space-x-7 justify-center">
           <a className="w-6 h-6" href="mailto:marcotomasrodriguez@gmail.com" aria-label="Send email">
@@ -56,17 +56,14 @@ export default function Contact() {
             className="w-6 h-6"
             href="https://github.com/MarcoTomasRodriguez"
             target="_blank"
-            rel="noopener"
+            rel="noreferrer"
             aria-label="Visit GitHub profile"
           >
             <CodeIcon />
           </a>
         </div>
       </div>
-      <form
-        className="flex flex-col p-4 col-span-5 md:col-span-2 space-y-6"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="flex flex-col p-4 col-span-5 md:col-span-2 space-y-6" onSubmit={handleSubmit(onSubmit)}>
         <InputField
           type="text"
           placeholder="Aspen Collins"
@@ -98,6 +95,6 @@ export default function Contact() {
           aria-label="Submit contact form"
         />
       </form>
-    </div>
+    </section>
   );
 }

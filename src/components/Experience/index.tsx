@@ -19,14 +19,11 @@ export default function Experience({ experience }: ExperienceProps) {
   const { t } = useTranslation("experience");
 
   return (
-    <div id="experience" className="py-12 w-full h-full">
-      <p className="font-bold text-xl mb-7">{t("title")}</p>
+    <section id="experience" className="py-12 w-full h-full">
+      <h1 className="font-bold text-xl mb-7">{t("title")}</h1>
       <div className="flex flex-col space-y-6">
         {experience.map((experience, index) => (
-          <div
-            key={index}
-            className="flex flex-col p-5 space-y-2 shadow rounded"
-          >
+          <div key={index} className="flex flex-col p-5 space-y-2 shadow rounded">
             <div key={index} className="flex flex-row space-x-4">
               <div className="relative w-14 h-14 my-1">
                 <Image
@@ -54,6 +51,6 @@ export default function Experience({ experience }: ExperienceProps) {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

@@ -14,7 +14,7 @@ export default function Articles() {
         <div className="grid grid-cols-6 gap-5 justify-center">
           {articles &&
             articles.map((index) => (
-              <Link key={index} href="/">
+              <Link key={index} href="/" passHref={true}>
                 <div className="flex flex-grow col-span-6 lg:col-span-3 shadow rounded cursor-pointer">
                   <div className="p-4">
                     <p className="text-xs font-bold">Justin Pacquing</p>
@@ -31,6 +31,7 @@ export default function Articles() {
                   </div>
                   <div className="relative w-[400px]">
                     <Image
+                      alt="Meaningful text"
                       layout="fill"
                       objectFit="fill"
                       className="rounded-r"
