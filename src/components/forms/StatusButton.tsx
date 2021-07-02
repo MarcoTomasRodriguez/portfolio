@@ -1,12 +1,7 @@
 import { CheckCircleIcon, ExclamationCircleIcon } from "@heroicons/react/solid";
-import SpinIcon from "../icons/SpinIcon";
+import SpinIcon from "../SpinIcon";
 
-export enum RequestStatus {
-  None,
-  Pending,
-  Success,
-  Failure,
-}
+export enum RequestStatus { None, Pending, Success, Failure }
 
 export type StatusButtonProps = React.ComponentProps<"button"> & {
   status: RequestStatus;
@@ -16,14 +11,7 @@ export type StatusButtonProps = React.ComponentProps<"button"> & {
   failureText: string;
 };
 
-export default function StatusButton({
-  status,
-  defaultText,
-  pendingText,
-  successText,
-  failureText,
-  ...props
-}: StatusButtonProps) {
+export default function StatusButton({ status, defaultText, pendingText, successText, failureText, ...props }: StatusButtonProps) {
   const resolveButtonStyles = () => {
     switch (status) {
       case RequestStatus.None:

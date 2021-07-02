@@ -60,7 +60,7 @@ export default function Header() {
 
   const links: HeaderLink[] = [
     { title: t("about"), icon: (props) => <UserIcon {...props} />, url: "#about" },
-    { title: t("experience"), icon: (props) => <BriefcaseIcon {...props} />, url: "#experience" },
+    { title: t("experience"), icon: (props) => <BriefcaseIcon {...props} />, url: "#experiences" },
     { title: t("projects"), icon: (props) => <CodeIcon {...props} />, url: "#projects" },
     { title: t("contact"), icon: (props) => <MailIcon {...props} />, url: "#contact" },
   ];

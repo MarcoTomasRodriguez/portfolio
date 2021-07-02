@@ -5,7 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Header from "../components/Header";
 import About from "../components/About";
 import Contact from "../components/Contact";
-import Experience from "../components/Experience";
+import Experience from "../components/Experiences";
 import Projects from "../components/Projects";
 
 export default function Home({ experience, projects }) {

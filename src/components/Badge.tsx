@@ -20,8 +20,6 @@ export function Badge({ text, color = "blue", ...props }: BadgeProps) {
   );
 
   return (
-    <div className={badgeClass} {...props}>
-      {text}
-    </div>
+    <div className={badgeClass} {...props}>{text}</div>
   );
 }
