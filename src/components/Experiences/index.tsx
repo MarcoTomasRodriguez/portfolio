@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import Section from "../Section";
 import Experience, { ExperienceProps } from "./Experience";
 
 type ExperiencesProps = {
@@ -9,8 +10,7 @@ export default function Experiences({ experience }: ExperiencesProps) {
   const { t } = useTranslation("experience");
 
   return (
-    <section id="experiences" className="py-12 w-full h-full">
-      <h1 className="font-bold text-xl mb-7">{t("title")}</h1>
+    <Section id="experiences" title={t("title")}>
       <div className="flex flex-col space-y-6">
         {experience && (
           experience.map((experience: ExperienceProps, index) => (
@@ -18,6 +18,6 @@ export default function Experiences({ experience }: ExperiencesProps) {
           ))
         )}
       </div>
-    </section>
+    </Section>
   );
 }
