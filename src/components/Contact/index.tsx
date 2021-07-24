@@ -1,6 +1,7 @@
-import Joi from "joi";
 import { useState } from "react";
-import { CodeIcon, MailIcon } from "@heroicons/react/outline";
+import Image from "next/image";
+import Joi from "joi";
+import { MailIcon } from "@heroicons/react/outline";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
@@ -52,14 +53,11 @@ export default function Contact() {
           <a className="w-6 h-6" href="mailto:marcotomasrodriguez@gmail.com" aria-label="Send email">
             <MailIcon />
           </a>
-          <a
-            className="w-6 h-6"
-            href="https://github.com/MarcoTomasRodriguez"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Visit GitHub profile"
-          >
-            <CodeIcon />
+          <a className="w-6 h-6" href="https://github.com/MarcoTomasRodriguez" target="_blank" rel="noreferrer" aria-label="Visit GitHub profile">
+            <Image src="/svg/github.svg" alt="github" width="24" height="24" />
+          </a>
+          <a className="w-6 h-6" href=" www.linkedin.com/in/marcotomasrodriguez" target="_blank" rel="noreferrer" aria-label="Visit LinkedIn profile">
+            <Image src="/svg/linkedin.svg" alt="github" width="24" height="24" />
           </a>
         </div>
       </div>
