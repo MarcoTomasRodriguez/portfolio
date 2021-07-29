@@ -5,12 +5,12 @@ export type ExperienceProps = {
 	years: string;
 	title: string;
 	company: string;
-	description: string;
+	points?: string[];
 	logo?: string;
 	badges?: BadgeProps[];
 };
 
-export default function Experience({ logo, title, company, years, description, badges, ...props }: ExperienceProps) {
+export default function Experience({ logo, title, company, years, points, badges, ...props }: ExperienceProps) {
 	return (
 		<div {...props} className="flex flex-col p-5 space-y-2 shadow rounded">
 	  	<div className="flex flex-row space-x-4">
@@ -23,7 +23,9 @@ export default function Experience({ logo, title, company, years, description, b
 					<p className="text-sm opacity-80">{years}</p>
 				</div>
 	  	</div>
-	  	<p className="text-sm">{description}</p>
+			<ul className="list-disc list-inside text-sm">
+				{points && points.map((point, index) => <li key={index}>{point}</li>)}
+			</ul>
 	  	{badges && (
 				<div className="flex flex-row flex-wrap -mt-1">
 					{badges.map((badge, index) => (

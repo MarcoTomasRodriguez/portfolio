@@ -2,7 +2,7 @@
   {
     "title": "kafka-mqtt-connector",
     "repositoryUrl": "https://github.com/MarcoTomasRodriguez/kafka-mqtt-connector",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a rutrum tortor, ut fermentum ligula. Ut consectetur convallis justo, nec hendrerit orci egestas vel. Aenean cursus efficitur elit, rutrum imperdiet lorem pharetra et. Maecenas quis sollicitudin felis. Donec vel nulla vel dolor ullamcorper dignissim. Nunc dictum quis sapien ut viverra. Suspendisse elit orci, tincidunt sit amet purus at, tempor iaculis enim. In hac habitasse platea dictumst.",
+    "description": " Simple non-distributed connector library between MQTT and Apache Kafka.",
     "badges": [
       { "text": "Go", "color": "blue" },
       { "text": "Kafka", "color": "red" },
@@ -10,24 +10,15 @@
     ]
   },
   {
-    "title": "auctioneer",
-    "repositoryUrl": "https://github.com/MarcoTomasRodriguez/auctioneer",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a rutrum tortor, ut fermentum ligula. Ut consectetur convallis justo, nec hendrerit orci egestas vel. Aenean cursus efficitur elit, rutrum imperdiet lorem pharetra et. Maecenas quis sollicitudin felis. Donec vel nulla vel dolor ullamcorper dignissim. Nunc dictum quis sapien ut viverra. Suspendisse elit orci, tincidunt sit amet purus at, tempor iaculis enim. In hac habitasse platea dictumst.",
-    "badges": [
-      { "text": "Scala", "color": "red" },
-      { "text": "Akka", "color": "blue" }
-    ]
-  },
-  {
     "title": "hget",
     "repositoryUrl": "https://github.com/MarcoTomasRodriguez/hget",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a rutrum tortor, ut fermentum ligula. Ut consectetur convallis justo, nec hendrerit orci egestas vel. Aenean cursus efficitur elit, rutrum imperdiet lorem pharetra et. Maecenas quis sollicitudin felis. Donec vel nulla vel dolor ullamcorper dignissim. Nunc dictum quis sapien ut viverra. Suspendisse elit orci, tincidunt sit amet purus at, tempor iaculis enim. In hac habitasse platea dictumst.",
+    "description": "Interruptible and resumable download accelerator.",
     "badges": [{ "text": "Go", "color": "blue" }]
   },
   {
     "title": "auto-printer",
     "repositoryUrl": "https://github.com/MarcoTomasRodriguez/auto-printer",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a rutrum tortor, ut fermentum ligula. Ut consectetur convallis justo, nec hendrerit orci egestas vel. Aenean cursus efficitur elit, rutrum imperdiet lorem pharetra et. Maecenas quis sollicitudin felis. Donec vel nulla vel dolor ullamcorper dignissim. Nunc dictum quis sapien ut viverra. Suspendisse elit orci, tincidunt sit amet purus at, tempor iaculis enim. In hac habitasse platea dictumst.",
+    "description": "Automatic email attachment printer.",
     "badges": [
       { "text": "Go", "color": "blue" },
       { "text": "Gmail", "color": "red" },

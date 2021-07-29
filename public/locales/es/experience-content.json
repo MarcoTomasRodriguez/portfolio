@@ -1,26 +1,30 @@
 [
   {
-    "years": "2020 - Actualidad",
-    "title": "Software Engineer",
+    "years": "Oct 2020 - Jul 2021 - 10 mos",
+    "title": "Backend Software Engineer",
     "company": "BlueSensor",
     "logo": "/img/bluesensor-logo.png",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a rutrum tortor, ut fermentum ligula. Ut consectetur convallis justo, nec hendrerit orci egestas vel. Aenean cursus efficitur elit, rutrum imperdiet lorem pharetra et. Maecenas quis sollicitudin felis. Donec vel nulla vel dolor ullamcorper dignissim. Nunc dictum quis sapien ut viverra. Suspendisse elit orci, tincidunt sit amet purus at, tempor iaculis enim. In hac habitasse platea dictumst.",
+    "points": [
+      "Engineered IoT solutions for the aquaculture industry.",
+      "Improved the backend system's reliability by applying consistent design patterns, increasing test coverage, and writing meaningful documentation.",
+      "Designed and implemented a real-time event-driven architecture.",
+      "Assisted firmware and frontend development teams to troubleshoot issues and propose solutions.",
+      "Collaborated with teams from other companies to integrate with external services.",
+      "Deployed and monitored backend infrastructure in AWS."
+    ],
     "badges": [
-      { "text": "Spring Boot", "color": "green" },
-      { "text": "Java", "color": "red" },
-      { "text": "Kotlin", "color": "blue" },
-      { "text": "Scala", "color": "red"},
-      { "text": "React.js", "color": "blue" },
-      { "text": "Next.js", "color": "gray" },
-      { "text": "PostgreSQL", "color": "blue" }
+      { "text": "Javascript", "color": "yellow" },
+      { "text": "Node.js", "color": "green" },
+      { "text": "Nest.js", "color": "red" },
+      { "text": "MongoDB", "color": "green" },
+      { "text": "MQTT", "color": "green" },
+      { "text": "Kafka", "color": "red" }
     ]
   },
   {
-    "years": "2019 - Actualidad",
+    "years": "Feb 2020 - Present",
     "title": "Software Consultant",
     "company": "Independent",
-    "logo": "/img/default-company.png",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a rutrum tortor, ut fermentum ligula. Ut consectetur convallis justo, nec hendrerit orci egestas vel. Aenean cursus efficitur elit, rutrum imperdiet lorem pharetra et. Maecenas quis sollicitudin felis. Donec vel nulla vel dolor ullamcorper dignissim. Nunc dictum quis sapien ut viverra. Suspendisse elit orci, tincidunt sit amet purus at, tempor iaculis enim. In hac habitasse platea dictumst.",
     "badges": [
       { "text": "Spring Boot", "color": "green" },
       { "text": "Java", "color": "red" },

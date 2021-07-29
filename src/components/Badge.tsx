@@ -9,7 +9,7 @@ export type BadgeProps = ComponentProps<"div"> & {
 export function Badge({ text, color = "blue", ...props }: BadgeProps) {
   // Necessary for PurgeCSS.
   const badgeClass = classNames(
-    "py-px px-2 mx-0.5 my-1 text-sm bg-opacity-20 rounded-xl whitespace-nowrap",
+    "py-px px-2 mx-0.5 my-1 text-sm bg-opacity-20 rounded-lg whitespace-nowrap",
     {
       "bg-red-500 text-red-900": color === "red",
       "bg-green-500 text-green-900": color === "green",
