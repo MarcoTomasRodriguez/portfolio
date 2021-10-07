@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { ComponentProps, useEffect, useState } from "react";
 import { interval } from "rxjs";
 import { map, take } from "rxjs/operators";
 
-type TypewriterProps = React.ComponentProps<"p"> & {
-  text: string;
+type TypewriterProps = Omit<ComponentProps<"p">, "children"> & {
+  children: string;
 };
 
-export default function Typewriter({ text, ...props }: TypewriterProps) {
+const Typewriter = ({ children: text, ...props }: TypewriterProps) => {
   const [currentText, setCurrentText] = useState("");
   const [running, setRunning] = useState(true);
 
@@ -29,4 +29,6 @@ export default function Typewriter({ text, ...props }: TypewriterProps) {
       {running && <span className="animate-blink">|</span>}
     </p>
   );
-}
+};
+
+export default Typewriter;

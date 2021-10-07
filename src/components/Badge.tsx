@@ -6,7 +6,7 @@ export type BadgeProps = ComponentProps<"div"> & {
   color: "red" | "green" | "blue" | "gray" | "yellow";
 };
 
-export function Badge({ text, color = "blue", ...props }: BadgeProps) {
+const Badge = ({ text, color = "blue", ...props }: BadgeProps) => {
   // Necessary for PurgeCSS.
   const badgeClass = classNames(
     "py-px px-2 mx-0.5 my-1 text-sm bg-opacity-20 rounded-lg whitespace-nowrap",
@@ -20,6 +20,10 @@ export function Badge({ text, color = "blue", ...props }: BadgeProps) {
   );
 
   return (
-    <div className={badgeClass} {...props}>{text}</div>
+    <div className={badgeClass} {...props}>
+      {text}
+    </div>
   );
-}
+};
+
+export default Badge;

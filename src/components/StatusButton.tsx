@@ -1,7 +1,12 @@
 import { CheckCircleIcon, ExclamationCircleIcon } from "@heroicons/react/solid";
-import SpinIcon from "../SpinIcon";
+import SpinIcon from "@components/SpinIcon";
 
-export enum RequestStatus { None, Pending, Success, Failure }
+export enum RequestStatus {
+  None,
+  Pending,
+  Success,
+  Failure,
+}
 
 export type StatusButtonProps = React.ComponentProps<"button"> & {
   status: RequestStatus;
@@ -11,23 +16,30 @@ export type StatusButtonProps = React.ComponentProps<"button"> & {
   failureText: string;
 };
 
-export default function StatusButton({ status, defaultText, pendingText, successText, failureText, ...props }: StatusButtonProps) {
+const StatusButton = ({
+  status,
+  defaultText,
+  pendingText,
+  successText,
+  failureText,
+  ...props
+}: StatusButtonProps) => {
   const resolveButtonStyles = () => {
     switch (status) {
       case RequestStatus.None:
-        return "button--blue";
+        return "bg-blue-700 hover:bg-blue-800";
       case RequestStatus.Pending:
-        return "button--yellow cursor-wait";
+        return "bg-yellow-500 hover:bg-yellow-600 cursor-wait";
       case RequestStatus.Success:
-        return "button--green cursor-not-allowed";
+        return "bg-green-500 hover:bg-green-600 cursor-not-allowed";
       case RequestStatus.Failure:
-        return "button--red";
+        return "bg-red-500 hover:bg-red-600";
     }
   };
 
   return (
     <button
-      className={`w-full button ${resolveButtonStyles()}`}
+      className={`w-full flex items-center justify-center p-2 rounded-md text-white ${resolveButtonStyles()}`}
       disabled={
         status == RequestStatus.Pending || status == RequestStatus.Success
       }
@@ -54,4 +66,6 @@ export default function StatusButton({ status, defaultText, pendingText, success
       )}
     </button>
   );
-}
+};
+
+export default StatusButton;

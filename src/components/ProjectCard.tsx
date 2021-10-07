@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
-import { Badge, BadgeProps } from "../Badge";
+import Badge, { BadgeProps } from "./Badge";
 
-export type ProjectProps = ComponentProps<"div"> & {
+export type ProjectCardProps = ComponentProps<"div"> & {
   title: string;
   description: string;
   websiteUrl?: string;
@@ -9,7 +9,14 @@ export type ProjectProps = ComponentProps<"div"> & {
   badges?: BadgeProps[];
 };
 
-export function Project({ title, description, websiteUrl, repositoryUrl, badges, ...props }: ProjectProps) {
+const ProjectCard = ({
+  title,
+  description,
+  websiteUrl,
+  repositoryUrl,
+  badges,
+  ...props
+}: ProjectCardProps) => {
   return (
     <div className="flex flex-col p-5 shadow rounded space-y-2" {...props}>
       <div className="divide-solid divide-y">
@@ -27,12 +34,26 @@ export function Project({ title, description, websiteUrl, repositoryUrl, badges,
         {(websiteUrl || repositoryUrl) && (
           <div className="pt-3">
             <div className="flex flex-row text-sm space-x-4">
-              {websiteUrl && <a href={websiteUrl} target="_blank" rel="noopener noreferrer">Website</a>}
-              {repositoryUrl && <a href={repositoryUrl} target="_blank" rel="noopener noreferrer">Repository</a>}
+              {websiteUrl && (
+                <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
+                  Website
+                </a>
+              )}
+              {repositoryUrl && (
+                <a
+                  href={repositoryUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Repository
+                </a>
+              )}
             </div>
           </div>
         )}
       </div>
     </div>
   );
-}
+};
+
+export default ProjectCard;
