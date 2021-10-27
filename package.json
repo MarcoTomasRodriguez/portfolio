@@ -11,28 +11,28 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.1",
-    "@heroicons/react": "^1.0.4",
+    "@heroicons/react": "^1.0.5",
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
-    "next": "11.1.2",
-    "next-i18next": "^8.8.0",
+    "next": "12.0.1",
+    "next-i18next": "^8.9.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-hotjar": "^3.0.1",
+    "react-hotjar": "^4.0.0",
     "rxjs": "^7.4.0",
-    "sharp": "^0.29.1",
-    "yup": "^0.32.9"
+    "sharp": "^0.29.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/forms": "^0.3.4",
     "@tailwindcss/line-clamp": "^0.2.2",
-    "@types/react": "^17.0.27",
+    "@types/react": "^17.0.33",
     "autoprefixer": "^10.3.7",
-    "eslint": "^7.32.0",
-    "eslint-config-next": "^11.1.2",
-    "postcss": "^8.3.9",
-    "tailwindcss": "^2.2.16",
-    "typescript": "^4.4.3"
+    "eslint": "^8.1.0",
+    "eslint-config-next": "^12.0.1",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.17",
+    "typescript": "^4.4.4"
   }
 }
