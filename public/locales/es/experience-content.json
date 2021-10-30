@@ -1,5 +1,22 @@
 [
   {
+    "years": "Feb 2020 - Present",
+    "title": "Software Consultant",
+    "company": "Independent",
+    "badges": [
+      { "text": "Spring Boot", "color": "green" },
+      { "text": "Java", "color": "red" },
+      { "text": "Kotlin", "color": "blue" },
+      { "text": "Scala", "color": "red" },
+      { "text": "React.js", "color": "blue" },
+      { "text": "Next.js", "color": "gray" },
+      { "text": "PostgreSQL", "color": "blue" },
+      { "text": "Redis", "color": "red" },
+      { "text": "Docker", "color": "blue" },
+      { "text": "Kubernetes", "color": "blue" }
+    ]
+  },
+  {
     "years": "Oct 2020 - Jul 2021 - 10 mos",
     "title": "Backend Software Engineer",
     "company": "BlueSensor",
@@ -18,21 +35,8 @@
       { "text": "Nest.js", "color": "red" },
       { "text": "MongoDB", "color": "green" },
       { "text": "MQTT", "color": "green" },
-      { "text": "Kafka", "color": "red" }
-    ]
-  },
-  {
-    "years": "Feb 2020 - Present",
-    "title": "Software Consultant",
-    "company": "Independent",
-    "badges": [
-      { "text": "Spring Boot", "color": "green" },
-      { "text": "Java", "color": "red" },
-      { "text": "Kotlin", "color": "blue" },
-      { "text": "Scala", "color": "red"},
-      { "text": "React.js", "color": "blue" },
-      { "text": "Next.js", "color": "gray" },
-      { "text": "PostgreSQL", "color": "blue" }
+      { "text": "Kafka", "color": "red" },
+      { "text": "Docker", "color": "blue" }
     ]
   }
 ]

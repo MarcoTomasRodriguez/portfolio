@@ -1,15 +1,5 @@
 [
   {
-    "title": "kafka-mqtt-connector",
-    "repositoryUrl": "https://github.com/MarcoTomasRodriguez/kafka-mqtt-connector",
-    "description": " Simple non-distributed connector library between MQTT and Apache Kafka.",
-    "badges": [
-      { "text": "Go", "color": "blue" },
-      { "text": "Kafka", "color": "red" },
-      { "text": "MQTT", "color": "green" }
-    ]
-  },
-  {
     "title": "hget",
     "repositoryUrl": "https://github.com/MarcoTomasRodriguez/hget",
     "description": "Interruptible and resumable download accelerator.",
@@ -23,6 +13,16 @@
       { "text": "Go", "color": "blue" },
       { "text": "Gmail", "color": "red" },
       { "text": "lpr", "color": "gray" }
+    ]
+  },
+  {
+    "title": "kafka-mqtt-connector",
+    "repositoryUrl": "https://github.com/MarcoTomasRodriguez/kafka-mqtt-connector",
+    "description": " Simple non-distributed connector library between MQTT and Apache Kafka.",
+    "badges": [
+      { "text": "Go", "color": "blue" },
+      { "text": "Kafka", "color": "red" },
+      { "text": "MQTT", "color": "green" }
     ]
   }
 ]
