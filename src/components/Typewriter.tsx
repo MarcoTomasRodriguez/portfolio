@@ -2,7 +2,7 @@ import { ComponentProps, useEffect, useState } from "react";
 import { interval } from "rxjs";
 import { map, take } from "rxjs/operators";
 
-type TypewriterProps = Omit<ComponentProps<"p">, "children"> & {
+type TypewriterProps = Omit<ComponentProps<"span">, "children"> & {
   children: string;
 };
 
@@ -24,10 +24,10 @@ const Typewriter = ({ children: text, ...props }: TypewriterProps) => {
   }, [text]);
 
   return (
-    <p {...props}>
+    <span {...props}>
       {currentText}
       {running && <span className="animate-blink">|</span>}
-    </p>
+    </span>
   );
 };
 

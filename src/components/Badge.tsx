@@ -1,10 +1,8 @@
 import { ComponentProps } from "react";
 import classNames from "classnames";
+import { Badge } from "@typeDefs/badge";
 
-export type BadgeProps = ComponentProps<"div"> & {
-  text: string;
-  color: "red" | "green" | "blue" | "gray" | "yellow";
-};
+type BadgeProps = ComponentProps<"div"> & Badge;
 
 const Badge = ({ text, color = "blue", ...props }: BadgeProps) => {
   // Necessary for PurgeCSS.

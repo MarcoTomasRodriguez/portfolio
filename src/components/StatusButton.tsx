@@ -8,7 +8,7 @@ export enum RequestStatus {
   Failure,
 }
 
-export type StatusButtonProps = React.ComponentProps<"button"> & {
+type StatusButtonProps = React.ComponentProps<"button"> & {
   status: RequestStatus;
   defaultText: string;
   pendingText: string;

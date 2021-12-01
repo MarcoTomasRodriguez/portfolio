@@ -11,14 +11,14 @@ import { Field, Form, Formik } from "formik";
 import { sendEmail } from "@libs/mailer";
 import Layout from "@components/Layout";
 import Section from "@components/Section";
-import ProjectCard, { ProjectCardProps } from "@components/ProjectCard";
-import ExperienceCard, {
-  ExperienceCardProps,
-} from "@components/ExperienceCard";
+import ProjectCard from "@components/ProjectCard";
+import ExperienceCard from "@components/ExperienceCard";
 import Typewriter from "@components/Typewriter";
 import StatusButton, { RequestStatus } from "@components/StatusButton";
 import Input from "@components/Input";
 import Textarea from "@components/Textarea";
+import { Project } from "@typeDefs/project";
+import { Experience } from "@typeDefs/experience";
 
 type EmailForm = {
   name: string;
@@ -63,14 +63,14 @@ const AboutSection = () => {
   );
 };
 
-const ExperienceSection = ({ experience }) => {
+const ExperienceSection = ({ experience }: { experience: Experience[] }) => {
   const { t } = useTranslation("experience");
 
   return (
     <Section id="experiences" title={t("title")}>
       <div className="flex flex-col space-y-6">
         {experience &&
-          experience.map((experience: ExperienceCardProps, index) => (
+          experience.map((experience, index) => (
             <ExperienceCard {...experience} key={index} />
           ))}
       </div>
@@ -78,14 +78,14 @@ const ExperienceSection = ({ experience }) => {
   );
 };
 
-const ProjectSection = ({ projects }) => {
+const ProjectSection = ({ projects }: { projects: Project[] }) => {
   const { t } = useTranslation("projects");
 
   return (
     <Section id="projects" title={t("title")}>
       <div className="flex flex-col space-y-6">
         {projects &&
-          projects.map((project: ProjectCardProps, index) => (
+          projects.map((project, index) => (
             <ProjectCard {...project} key={index} />
           ))}
       </div>
@@ -129,7 +129,7 @@ const ContactSection = () => {
           </a>
           <a
             className="w-6 h-6"
-            href=" www.linkedin.com/in/marcotomasrodriguez"
+            href="https://www.linkedin.com/in/marcotomasrodriguez"
             target="_blank"
             rel="noreferrer"
             aria-label="Visit LinkedIn profile"
@@ -188,7 +188,13 @@ const ContactSection = () => {
   );
 };
 
-const Home = ({ experience, projects }) => {
+const Home = ({
+  experience,
+  projects,
+}: {
+  experience: Experience[];
+  projects: Project[];
+}) => {
   return (
     <Layout
       title="Marco Tom&aacute;s Rodr&iacute;guez"
@@ -204,30 +210,32 @@ const Home = ({ experience, projects }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const localesDirectory = path.join(process.cwd(), `public/locales/${locale}`);
 
+  const translations = await serverSideTranslations(locale, [
+    "about",
+    "contact",
+    "experience",
+    "header",
+    "projects",
+  ]);
+
   const experiencePath = path.join(localesDirectory, "experience-content.json");
-  const experienceRaw = fs.existsSync(experiencePath)
-    ? fs.readFileSync(experiencePath, "utf-8")
-    : null;
+  const experience = fs.existsSync(experiencePath)
+    ? JSON.parse(fs.readFileSync(experiencePath, "utf-8"))
+    : [];
 
   const projectsPath = path.join(localesDirectory, "projects-content.json");
-  const projectsRaw = fs.existsSync(projectsPath)
-    ? fs.readFileSync(projectsPath, "utf-8")
-    : null;
+  const projects = fs.existsSync(projectsPath)
+    ? JSON.parse(fs.readFileSync(projectsPath, "utf-8"))
+    : [];
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
-        "about",
-        "contact",
-        "experience",
-        "header",
-        "projects",
-      ])),
-      experience: JSON.parse(experienceRaw) || [],
-      projects: JSON.parse(projectsRaw) || [],
+      ...translations,
+      experience,
+      projects,
     },
   };
 };

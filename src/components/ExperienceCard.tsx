@@ -1,14 +1,9 @@
+import { ComponentProps } from "react";
 import Image from "next/image";
-import Badge, { BadgeProps } from "./Badge";
+import { Experience } from "@typeDefs/experience";
+import Badge from "./Badge";
 
-export type ExperienceCardProps = {
-  years: string;
-  title: string;
-  company: string;
-  points?: string[];
-  logo?: string;
-  badges?: BadgeProps[];
-};
+type ExperienceCardProps = ComponentProps<"section"> & Experience;
 
 const ExperienceCard = ({
   logo,
@@ -20,7 +15,7 @@ const ExperienceCard = ({
   ...props
 }: ExperienceCardProps) => {
   return (
-    <div {...props} className="flex flex-col p-5 space-y-2 shadow rounded">
+    <section {...props} className="flex flex-col p-5 space-y-2 shadow rounded">
       <div className="flex flex-row space-x-4">
         <div className="relative w-14 h-14 my-1">
           <Image
@@ -32,7 +27,7 @@ const ExperienceCard = ({
           />
         </div>
         <div>
-          <p className="font-bold">{title}</p>
+          <h1 className="font-bold">{title}</h1>
           <p className="text-sm">{company}</p>
           <p className="text-sm opacity-80">{years}</p>
         </div>
@@ -47,7 +42,7 @@ const ExperienceCard = ({
           ))}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

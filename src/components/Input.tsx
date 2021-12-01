@@ -22,7 +22,7 @@ const Input = ({
         {label}
       </label>
       <input
-        className=" w-full rounded-md shadow p-2 text-sm text-gray-900 placeholder-gray-300 ring-1 ring-gray-400 border-0 focus:ring-2 focus:ring-primary focus:outline-none"
+        className=" w-full rounded-md shadow p-2 text-sm text-gray-900 placeholder-gray-400 ring-1 ring-gray-400 border-0 focus:ring-2 focus:ring-primary focus:outline-none"
         {...field}
         {...props}
       />

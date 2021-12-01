@@ -1,13 +1,8 @@
 import { ComponentProps } from "react";
-import Badge, { BadgeProps } from "./Badge";
+import Badge from "./Badge";
+import { Project } from "@typeDefs/project";
 
-export type ProjectCardProps = ComponentProps<"div"> & {
-  title: string;
-  description: string;
-  websiteUrl?: string;
-  repositoryUrl?: string;
-  badges?: BadgeProps[];
-};
+type ProjectCardProps = ComponentProps<"section"> & Project;
 
 const ProjectCard = ({
   title,
@@ -18,41 +13,36 @@ const ProjectCard = ({
   ...props
 }: ProjectCardProps) => {
   return (
-    <div className="flex flex-col p-5 shadow rounded space-y-2" {...props}>
-      <div className="divide-solid divide-y">
-        <div className="pb-3 space-y-2">
-          <p className="text-black font-bold">{title}</p>
-          <p className="text-black text-sm">{description}</p>
-          {badges && (
-            <div className="flex flex-row flex-wrap -mt-1">
-              {badges.map((badge, index) => (
-                <Badge key={index} text={badge.text} color={badge.color} />
-              ))}
-            </div>
-          )}
-        </div>
-        {(websiteUrl || repositoryUrl) && (
-          <div className="pt-3">
-            <div className="flex flex-row text-sm space-x-4">
-              {websiteUrl && (
-                <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
-                  Website
-                </a>
-              )}
-              {repositoryUrl && (
-                <a
-                  href={repositoryUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Repository
-                </a>
-              )}
-            </div>
+    <section
+      className="flex flex-col p-5 shadow rounded divide-solid divide-y"
+      {...props}
+    >
+      <div className="pb-3 space-y-2">
+        <h1 className="text-black font-bold">{title}</h1>
+        <p className="text-black text-sm">{description}</p>
+        {badges && (
+          <div className="flex flex-row flex-wrap -mt-1">
+            {badges.map((badge, index) => (
+              <Badge key={index} text={badge.text} color={badge.color} />
+            ))}
           </div>
         )}
       </div>
-    </div>
+      {(websiteUrl || repositoryUrl) && (
+        <div className="pt-3 flex flex-row text-sm space-x-4">
+          {websiteUrl && (
+            <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
+              Website
+            </a>
+          )}
+          {repositoryUrl && (
+            <a href={repositoryUrl} target="_blank" rel="noopener noreferrer">
+              Repository
+            </a>
+          )}
+        </div>
+      )}
+    </section>
   );
 };
 
