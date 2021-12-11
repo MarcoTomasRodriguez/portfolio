@@ -1,9 +1,8 @@
 module.exports = {
-  purge: [
+  content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -23,12 +22,10 @@ module.exports = {
       sans: ["Roboto", "system-ui"],
     },
   },
-  variants: {
-    extend: {},
-  },
   plugins: [
     require("@tailwindcss/forms"),
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/typography"),
   ],
 };
