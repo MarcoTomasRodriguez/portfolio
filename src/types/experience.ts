@@ -6,5 +6,5 @@ export type Experience = {
   company: string;
   points?: string[];
   logo?: string;
-  badges?: Badge[];
+  badges: Badge[];
 };

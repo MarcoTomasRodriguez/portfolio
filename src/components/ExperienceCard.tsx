@@ -15,7 +15,8 @@ const ExperienceCard = ({
   ...props
 }: ExperienceCardProps) => {
   return (
-    <section {...props} className="flex flex-col p-5 space-y-2 shadow rounded">
+    <section className="flex flex-col p-5 space-y-2 shadow rounded" {...props}>
+      {/* <section className="flex flex-col p-5 space-y-2 shadow rounded" {...props}> */}
       <div className="flex flex-row space-x-4">
         <div className="relative w-14 h-14 my-1">
           <Image
@@ -33,15 +34,15 @@ const ExperienceCard = ({
         </div>
       </div>
       <ul className="list-disc list-inside text-sm">
-        {points && points.map((point, index) => <li key={index}>{point}</li>)}
+        {points?.map((point, index) => (
+          <li key={index}>{point}</li>
+        ))}
       </ul>
-      {badges && (
-        <div className="flex flex-row flex-wrap -mt-1">
-          {badges.map((badge, index) => (
-            <Badge key={index} text={badge.text} color={badge.color} />
-          ))}
-        </div>
-      )}
+      <div className="flex flex-row flex-wrap -mt-1">
+        {badges.map((badge, index) => (
+          <Badge key={index} text={badge.text} color={badge.color} />
+        ))}
+      </div>
     </section>
   );
 };

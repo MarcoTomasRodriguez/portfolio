@@ -3,10 +3,10 @@ import { interval } from "rxjs";
 import { map, take } from "rxjs/operators";
 
 type TypewriterProps = Omit<ComponentProps<"span">, "children"> & {
-  children: string;
+  text: string;
 };
 
-const Typewriter = ({ children: text, ...props }: TypewriterProps) => {
+const Typewriter = ({ text, ...props }: TypewriterProps) => {
   const [currentText, setCurrentText] = useState("");
   const [running, setRunning] = useState(true);
 

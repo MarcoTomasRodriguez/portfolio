@@ -14,7 +14,7 @@ type ArticleProps = {
 
 function Article({ title, type, source }: ArticleProps) {
   return (
-    <Layout title={title} description={title} site="blog">
+    <Layout site="blog" title={title} description={title}>
       <article className="py-8 px-6 sm:px-8">
         <header>
           <h1 className="flex flex-col items-center">

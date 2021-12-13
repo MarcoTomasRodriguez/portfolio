@@ -18,6 +18,7 @@ import {
   TranslateIcon,
   UserIcon,
 } from "@heroicons/react/solid";
+import Link from "next/link";
 
 enum Direction {
   Up = "Up",
@@ -67,7 +68,7 @@ const PortfolioHeader = () => {
     {
       title: t("experience"),
       icon: (props) => <BriefcaseIcon {...props} />,
-      url: "#experiences",
+      url: "#experience",
     },
     {
       title: t("projects"),
@@ -94,20 +95,22 @@ const PortfolioHeader = () => {
       }`}
     >
       {links.map((link, index) => (
-        <a
+        <Link
           key={index}
           href={link.url}
+          passHref
           aria-label={`Scroll to ${link.title}`}
-          className="flex flex-row text-sm text-white p-2 rounded hover:bg-black hover:bg-opacity-10"
         >
-          <link.icon
-            className="visible sm:invisible h-5 w-5 sm:h-0 sm:w-0"
-            viewBox="0 0 20 20"
-          />
-          <p className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">
-            {link.title}
-          </p>
-        </a>
+          <button className="flex flex-row text-sm text-white p-2 rounded hover:bg-black hover:bg-opacity-10">
+            <link.icon
+              className="visible sm:invisible h-5 w-5 sm:h-0 sm:w-0"
+              viewBox="0 0 20 20"
+            />
+            <span className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">
+              {link.title}
+            </span>
+          </button>
+        </Link>
       ))}
       <Menu as="div" className="relative">
         <Menu.Button

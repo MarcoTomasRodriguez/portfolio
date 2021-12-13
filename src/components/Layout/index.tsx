@@ -6,9 +6,9 @@ const PortfolioHeader = dynamic(() => import("./PortfolioHeader"));
 const BlogHeader = dynamic(() => import("./BlogHeader"));
 
 type LayoutProps = {
+  site: "portfolio" | "blog";
   title: string;
   description: string;
-  site: "portfolio" | "blog";
   children: ReactNode;
 };
 

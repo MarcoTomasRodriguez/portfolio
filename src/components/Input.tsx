@@ -1,35 +1,41 @@
-import { ComponentProps } from "react";
-import { FieldProps } from "formik";
+import { ComponentProps, createElement } from "react";
+import { useController, UseControllerProps } from "react-hook-form";
 
-type InputProps = FieldProps &
-  ComponentProps<"input"> & {
+type InputType = "input" | "textarea";
+
+type InputProps<T extends InputType> = UseControllerProps<any> &
+  ComponentProps<T> & {
     label: string;
+    component: T;
   };
 
-const Input = ({
-  className,
+const Input = <T extends InputType>({
+  component,
   label,
-  field,
-  form: { touched, errors },
+  className,
+  name,
+  control,
+  rules,
   ...props
-}: InputProps) => {
+}: InputProps<T>) => {
+  const {
+    field,
+    fieldState: { error },
+  } = useController({ name, control, rules });
+
+  const inputElement = createElement(component, {
+    className:
+      "w-full rounded-md shadow p-2 text-sm text-gray-900 placeholder-gray-400 ring-1 ring-gray-400 border-0 focus:ring-2 focus:ring-primary focus:outline-none",
+    ...props,
+    ...field,
+  });
+
   return (
-    <div className={`block ${className}`}>
-      <label
-        htmlFor={props.id}
-        className="block text-sm text-gray-600 font-semibold py-1"
-      >
-        {label}
-      </label>
-      <input
-        className=" w-full rounded-md shadow p-2 text-sm text-gray-900 placeholder-gray-400 ring-1 ring-gray-400 border-0 focus:ring-2 focus:ring-primary focus:outline-none"
-        {...field}
-        {...props}
-      />
-      {touched[field.name] && errors[field.name] && (
-        <div className="text-red-600 text-sm">{errors[field.name]}</div>
-      )}
-    </div>
+    <label className={`block py-1 space-y-1 ${className}`}>
+      <span className="text-sm text-gray-600 font-semibold">{label}</span>
+      {inputElement}
+      {!!error && <div className="text-red-600 text-sm">{error.message}</div>}
+    </label>
   );
 };
 
