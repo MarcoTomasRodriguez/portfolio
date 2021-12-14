@@ -2,10 +2,10 @@ import fs from "fs";
 import path from "path";
 import { GetStaticProps } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import matter from "gray-matter";
 import Layout from "@components/Layout";
 import Card from "@components/Card";
-import Image from "next/image";
 
 type ArticlesProps = {
   articles: {
@@ -18,17 +18,6 @@ type ArticlesProps = {
     slug: string;
   }[];
 };
-
-/*
-<Image
-  src="/img/default-company.png"
-  className="img-fluid mt-1 rounded-start"
-  alt="thumbnail"
-  width={500}
-  height={400}
-  objectFit="cover"
-/>
-*/
 
 const Articles = ({ articles }: ArticlesProps) => {
   return (

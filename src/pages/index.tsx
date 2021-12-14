@@ -7,17 +7,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ArrowDownIcon, MailIcon } from "@heroicons/react/outline";
+import { CheckCircleIcon, ExclamationCircleIcon } from "@heroicons/react/solid";
 import { useForm } from "react-hook-form";
 import { EmailInformation, sendEmail } from "@libs/mailer";
 import { Project } from "@typeDefs/project";
 import { Experience } from "@typeDefs/experience";
 import Layout from "@components/Layout";
-import ExperienceCard from "@components/ExperienceCard";
 import Typewriter from "@components/Typewriter";
-import StatusButton, { RequestStatus } from "@components/StatusButton";
 import Input from "@components/Input";
 import Card from "@components/Card";
 import Badge from "@components/Badge";
+import SpinIcon from "@components/SpinIcon";
+
+type RequestStatus = "SUCCESS" | "FAILURE" | "PENDING" | undefined;
 
 type HomeProps = {
   experience: Experience[];
@@ -31,7 +33,7 @@ const Home = ({ experience, projects }: HomeProps) => {
   const { t: contactT } = useTranslation("contact");
 
   const [displayProfession, setDisplayProfession] = useState(false);
-  const [emailStatus, setEmailStatus] = useState(RequestStatus.None);
+  const [emailStatus, setEmailStatus] = useState<RequestStatus>();
 
   useEffect(() => {
     const timeToPrintIntroduction = aboutT("introduction").length * 60;
@@ -43,11 +45,24 @@ const Home = ({ experience, projects }: HomeProps) => {
   });
 
   const submitEmailForm = (data: EmailInformation) => {
-    setEmailStatus(RequestStatus.Pending);
+    setEmailStatus("PENDING");
 
     sendEmail(data)
-      .then(() => setEmailStatus(RequestStatus.Success))
-      .catch(() => setEmailStatus(RequestStatus.Failure));
+      .then(() => setEmailStatus("SUCCESS"))
+      .catch(() => setEmailStatus("FAILURE"));
+  };
+
+  const resolveButtonStyles = () => {
+    switch (emailStatus) {
+      case "SUCCESS":
+        return "bg-green-500 hover:bg-green-600 cursor-not-allowed";
+      case "FAILURE":
+        return "bg-red-500 hover:bg-red-600";
+      case "PENDING":
+        return "bg-yellow-500 hover:bg-yellow-600 cursor-wait";
+      case undefined:
+        return "bg-blue-700 hover:bg-blue-800";
+    }
   };
 
   return (
@@ -80,7 +95,34 @@ const Home = ({ experience, projects }: HomeProps) => {
           <h1 className="mb-7 text-xl font-bold">{experienceT("title")}</h1>
           <div className="flex flex-col space-y-6">
             {experience.map((experience, index) => (
-              <ExperienceCard {...experience} key={index} />
+              <Card key={index}>
+                <div className="flex flex-row space-x-4">
+                  <div className="relative w-14 h-14 my-1">
+                    <Image
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded"
+                      src={experience.logo || "/img/default-company.png"}
+                      alt={`${experience.company} logo`}
+                    />
+                  </div>
+                  <div>
+                    <h1 className="font-bold">{experience.title}</h1>
+                    <p className="text-sm">{experience.company}</p>
+                    <p className="text-sm opacity-80">{experience.years}</p>
+                  </div>
+                </div>
+                <ul className="mt-2 list-disc list-inside text-sm">
+                  {experience.points?.map((point, index) => (
+                    <li key={index}>{point}</li>
+                  ))}
+                </ul>
+                <div className="flex flex-row flex-wrap mt-1">
+                  {experience.badges.map((badge, index) => (
+                    <Badge key={index} text={badge.text} color={badge.color} />
+                  ))}
+                </div>
+              </Card>
             ))}
           </div>
         </section>
@@ -215,15 +257,31 @@ const Home = ({ experience, projects }: HomeProps) => {
                 required: { value: true, message: "Required" },
               }}
             />
-            <StatusButton
-              type="submit"
-              status={emailStatus}
-              defaultText="Send"
-              pendingText="Sending"
-              successText="Sent"
-              failureText="Retry"
+            <button
+              className={`w-full flex items-center justify-center p-2 rounded-md text-white ${resolveButtonStyles()}`}
+              disabled={emailStatus == "SUCCESS" || emailStatus == "PENDING"}
               aria-label="Submit contact form"
-            />
+            >
+              {!emailStatus && <>Send</>}
+              {emailStatus == "SUCCESS" && (
+                <>
+                  Sent
+                  <CheckCircleIcon className="h-5 w-5 ml-1" />
+                </>
+              )}
+              {emailStatus == "FAILURE" && (
+                <>
+                  Retry
+                  <ExclamationCircleIcon className="h-5 w-5 ml-1" />
+                </>
+              )}
+              {emailStatus == "PENDING" && (
+                <>
+                  Sending
+                  <SpinIcon className="animate-spin h-4 w-4 ml-1" />
+                </>
+              )}
+            </button>
           </form>
         </section>
       </div>

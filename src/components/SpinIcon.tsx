@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 
-type SpinIconProps = ComponentProps<"svg">;
+type SpinIconProps = Omit<ComponentProps<"svg">, "children">;
 
 const SpinIcon = (props: SpinIconProps) => {
   return (
