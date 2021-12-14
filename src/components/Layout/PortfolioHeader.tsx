@@ -18,18 +18,12 @@ import {
   TranslateIcon,
   UserIcon,
 } from "@heroicons/react/solid";
-import Link from "next/link";
+import HeaderLink from "./HeaderLink";
 
 enum Direction {
   Up = "Up",
   Down = "Down",
 }
-
-type HeaderLink = {
-  title: string;
-  icon: (props: React.ComponentProps<"svg">) => JSX.Element;
-  url: string;
-};
 
 const PortfolioHeader = () => {
   const router = useRouter();
@@ -59,29 +53,6 @@ const PortfolioHeader = () => {
       .subscribe(() => setVisibility(() => false));
   }, []);
 
-  const links: HeaderLink[] = [
-    {
-      title: t("about"),
-      icon: (props) => <UserIcon {...props} />,
-      url: "#about",
-    },
-    {
-      title: t("experience"),
-      icon: (props) => <BriefcaseIcon {...props} />,
-      url: "#experience",
-    },
-    {
-      title: t("projects"),
-      icon: (props) => <CodeIcon {...props} />,
-      url: "#projects",
-    },
-    {
-      title: t("contact"),
-      icon: (props) => <MailIcon {...props} />,
-      url: "#contact",
-    },
-  ];
-
   const languages = [
     { language: "English", code: "en" },
     { language: "Deutsch", code: "de" },
@@ -94,24 +65,14 @@ const PortfolioHeader = () => {
         visibility ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      {links.map((link, index) => (
-        <Link
-          key={index}
-          href={link.url}
-          passHref
-          aria-label={`Scroll to ${link.title}`}
-        >
-          <button className="flex flex-row text-sm text-white p-2 rounded hover:bg-black hover:bg-opacity-10">
-            <link.icon
-              className="visible sm:invisible h-5 w-5 sm:h-0 sm:w-0"
-              viewBox="0 0 20 20"
-            />
-            <span className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">
-              {link.title}
-            </span>
-          </button>
-        </Link>
-      ))}
+      <HeaderLink title={t("about")} url="#about" Icon={UserIcon} />
+      <HeaderLink
+        title={t("experience")}
+        url="#experience"
+        Icon={BriefcaseIcon}
+      />
+      <HeaderLink title={t("projects")} url="#projects" Icon={CodeIcon} />
+      <HeaderLink title={t("contact")} url="#contact" Icon={MailIcon} />
       <Menu as="div" className="relative">
         <Menu.Button
           className="inline-flex justify-center w-full rounded-md text-sm text-white p-2 hover:bg-black hover:bg-opacity-10 focus:outline-none"
