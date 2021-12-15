@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { ComponentProps } from "react";
+import { ComponentProps, ComponentType } from "react";
 
 type HeaderLinkProps = {
   title: string;
   url: string;
-  Icon: (props: ComponentProps<"svg">) => JSX.Element;
+  Icon: ComponentType<ComponentProps<"svg">>;
 };
 
 const HeaderLink = ({ title, url, Icon }: HeaderLinkProps) => {

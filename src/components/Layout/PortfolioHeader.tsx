@@ -1,15 +1,5 @@
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
-import { fromEvent } from "rxjs";
-import {
-  distinctUntilChanged,
-  filter,
-  map,
-  pairwise,
-  share,
-  throttleTime,
-} from "rxjs/operators";
 import { Menu } from "@headlessui/react";
 import {
   BriefcaseIcon,
@@ -19,40 +9,14 @@ import {
   UserIcon,
   NewspaperIcon,
 } from "@heroicons/react/solid";
+import useScrollableHide from "@hooks/useScrollableHide";
 import HeaderLink from "./HeaderLink";
-
-enum Direction {
-  Up = "Up",
-  Down = "Down",
-}
 
 const PortfolioHeader = () => {
   const router = useRouter();
-
   const { t } = useTranslation();
-  const [visibility, setVisibility] = useState(true);
 
-  useEffect(() => {
-    // window.scroll observable.
-    const scroll$ = fromEvent(window, "scroll").pipe(
-      throttleTime(10),
-      map(() => window.pageYOffset),
-      pairwise(),
-      map(([y1, y2]) => (y2 < y1 ? Direction.Up : Direction.Down)),
-      distinctUntilChanged(),
-      share()
-    );
-
-    // On scroll up, set header visibility to true.
-    scroll$
-      .pipe(filter((direction) => direction === Direction.Up))
-      .subscribe(() => setVisibility(() => true));
-
-    // On scroll down, set header visibility to false.
-    scroll$
-      .pipe(filter((direction) => direction === Direction.Down))
-      .subscribe(() => setVisibility(() => false));
-  }, []);
+  const hidden = useScrollableHide();
 
   const languages = [
     { language: "English", code: "en" },
@@ -63,7 +27,7 @@ const PortfolioHeader = () => {
   return (
     <header
       className={`fixed flex flex-row space-x-8 sm:space-x-6 md:space-x-7 lg:space-x-14 justify-center w-full z-50 bg-primary p-2 transition duration-200 ease-in ${
-        visibility ? "translate-y-0" : "-translate-y-full"
+        hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >
       <HeaderLink title={t("header.about")} url="#about" Icon={UserIcon} />
@@ -96,7 +60,7 @@ const PortfolioHeader = () => {
             className="visible sm:invisible h-5 w-5 sm:h-0 sm:w-0 -mr-1 ml-2 sm:mr-0 sm:ml-0"
           />
         </Menu.Button>
-        {visibility && (
+        {!hidden && (
           <Menu.Items className="absolute origin-top-right right-0 mt-2 w-40 rounded-md bg-white shadow-lg divide-y divide-gray-100 focus:outline-none py-2">
             {languages.map((lang, index) => (
               <Menu.Item
