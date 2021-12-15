@@ -1,1 +1,10 @@
-{}
+{
+  "header": {
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "articles": "Artículos",
+    "contact": "Contacto",
+    "changeLanguage": "Cambiar idioma"
+  }
+}

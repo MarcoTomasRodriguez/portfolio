@@ -17,6 +17,7 @@ import {
   MailIcon,
   TranslateIcon,
   UserIcon,
+  NewspaperIcon,
 } from "@heroicons/react/solid";
 import HeaderLink from "./HeaderLink";
 
@@ -28,7 +29,7 @@ enum Direction {
 const PortfolioHeader = () => {
   const router = useRouter();
 
-  const { t } = useTranslation("header");
+  const { t } = useTranslation();
   const [visibility, setVisibility] = useState(true);
 
   useEffect(() => {
@@ -65,21 +66,30 @@ const PortfolioHeader = () => {
         visibility ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <HeaderLink title={t("about")} url="#about" Icon={UserIcon} />
+      <HeaderLink title={t("header.about")} url="#about" Icon={UserIcon} />
       <HeaderLink
-        title={t("experience")}
+        title={t("header.experience")}
         url="#experience"
         Icon={BriefcaseIcon}
       />
-      <HeaderLink title={t("projects")} url="#projects" Icon={CodeIcon} />
-      <HeaderLink title={t("contact")} url="#contact" Icon={MailIcon} />
+      <HeaderLink
+        title={t("header.projects")}
+        url="#projects"
+        Icon={CodeIcon}
+      />
+      <HeaderLink
+        title={t("header.articles")}
+        url="#articles"
+        Icon={NewspaperIcon}
+      />
+      <HeaderLink title={t("header.contact")} url="#contact" Icon={MailIcon} />
       <Menu as="div" className="relative">
         <Menu.Button
           className="inline-flex justify-center w-full rounded-md text-sm text-white p-2 hover:bg-black hover:bg-opacity-10 focus:outline-none"
           aria-label="Change language"
         >
           <p className="invisible sm:visible h-0 w-0 sm:h-auto sm:w-auto">
-            {t("changeLanguage")}
+            {t("header.changeLanguage")}
           </p>
           <TranslateIcon
             aria-hidden="true"

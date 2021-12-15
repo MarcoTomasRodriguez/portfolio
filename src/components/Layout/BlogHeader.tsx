@@ -1,13 +1,19 @@
 import Link from "next/link";
+import { BriefcaseIcon, NewspaperIcon } from "@heroicons/react/solid";
+import HeaderLink from "./HeaderLink";
 
 const BlogHeader = () => {
   return (
-    <header className="w-full z-50 bg-primary py-2 px-4 flex flex-row justify-between space-x-8 sm:space-x-6 md:space-x-7 lg:space-x-14">
+    <header className="w-full z-50 bg-primary py-2 px-4 flex flex-row justify-between">
       <Link href="/articles" passHref>
         <a className="flex flex-row text-white p-2">
           Marco Tom&aacute;s Rodr&iacute;guez
         </a>
       </Link>
+      <div className="flex">
+        <HeaderLink title="Articles" url="/articles" Icon={NewspaperIcon} />
+        <HeaderLink title="Portfolio" url="/" Icon={BriefcaseIcon} />
+      </div>
     </header>
   );
 };

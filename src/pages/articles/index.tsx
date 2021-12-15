@@ -6,17 +6,10 @@ import Image from "next/image";
 import matter from "gray-matter";
 import Layout from "@components/Layout";
 import Card from "@components/Card";
+import { Article } from "@typeDefs/article";
 
 type ArticlesProps = {
-  articles: {
-    meta: {
-      title: string;
-      abstract: string;
-      date: string;
-      type: string;
-    };
-    slug: string;
-  }[];
+  articles: Article[];
 };
 
 const Articles = ({ articles }: ArticlesProps) => {

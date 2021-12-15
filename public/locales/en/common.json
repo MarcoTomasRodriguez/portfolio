@@ -1,1 +1,10 @@
-{}
+{
+  "header": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "articles": "Articles",
+    "contact": "Contact Me",
+    "changeLanguage": "Change language"
+  }
+}

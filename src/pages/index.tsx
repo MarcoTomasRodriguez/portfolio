@@ -12,33 +12,33 @@ import { useForm } from "react-hook-form";
 import { EmailInformation, sendEmail } from "@libs/mailer";
 import { Project } from "@typeDefs/project";
 import { Experience } from "@typeDefs/experience";
+import { Article } from "@typeDefs/article";
 import Layout from "@components/Layout";
 import Typewriter from "@components/Typewriter";
 import Input from "@components/Input";
 import Card from "@components/Card";
 import Badge from "@components/Badge";
 import SpinIcon from "@components/SpinIcon";
+import matter from "gray-matter";
 
 type RequestStatus = "SUCCESS" | "FAILURE" | "PENDING" | undefined;
 
 type HomeProps = {
   experience: Experience[];
   projects: Project[];
+  articles: Article[];
 };
 
-const Home = ({ experience, projects }: HomeProps) => {
-  const { t: aboutT } = useTranslation("about");
-  const { t: experienceT } = useTranslation("experience");
-  const { t: projectsT } = useTranslation("projects");
-  const { t: contactT } = useTranslation("contact");
+const Home = ({ experience, projects, articles }: HomeProps) => {
+  const { t } = useTranslation("index");
 
   const [displayProfession, setDisplayProfession] = useState(false);
   const [emailStatus, setEmailStatus] = useState<RequestStatus>();
 
   useEffect(() => {
-    const timeToPrintIntroduction = aboutT("introduction").length * 60;
+    const timeToPrintIntroduction = t("about.introduction").length * 60;
     setTimeout(() => setDisplayProfession(true), timeToPrintIntroduction + 100);
-  }, [aboutT]);
+  }, [t]);
 
   const { control, handleSubmit } = useForm<EmailInformation>({
     defaultValues: { email: "", name: "", message: "" },
@@ -77,10 +77,10 @@ const Home = ({ experience, projects }: HomeProps) => {
       >
         <Typewriter
           className="text-2xl font-bold"
-          text={aboutT("introduction")}
+          text={t("about.introduction")}
         />
         {displayProfession && (
-          <Typewriter className="text-xl" text={aboutT("profession")} />
+          <Typewriter className="text-xl" text={t("about.profession")} />
         )}
         <a
           href="#experience"
@@ -92,7 +92,7 @@ const Home = ({ experience, projects }: HomeProps) => {
       </section>
       <div className="divide-solid divide-y-2 px-6 md:px-8 lg:px-12 ">
         <section id="experience" className="w-full h-full py-12">
-          <h1 className="mb-7 text-xl font-bold">{experienceT("title")}</h1>
+          <h1 className="mb-7 text-xl font-bold">{t("experience.title")}</h1>
           <div className="flex flex-col space-y-6">
             {experience.map((experience, index) => (
               <Card key={index}>
@@ -127,7 +127,7 @@ const Home = ({ experience, projects }: HomeProps) => {
           </div>
         </section>
         <section id="projects" className="w-full h-full py-12">
-          <h1 className="mb-7 text-xl font-bold">{projectsT("title")}</h1>
+          <h1 className="mb-7 text-xl font-bold">{t("projects.title")}</h1>
           <div className="flex flex-col space-y-6">
             {projects.map((project, index) => (
               <Card key={index}>
@@ -164,13 +164,34 @@ const Home = ({ experience, projects }: HomeProps) => {
             ))}
           </div>
         </section>
+        <section id="articles" className="w-full h-full py-12">
+          <h1 className="mb-7 text-xl font-bold"> {t("articles.title")}</h1>
+          <div className="flex flex-col space-y-6">
+            {articles.map((article, index) => (
+              <Link
+                key={index}
+                href={`/articles/${article.slug}`}
+                locale={false}
+                passHref
+              >
+                <Card className="cursor-pointer">
+                  <Card.Title>{article.meta.title}</Card.Title>
+                  <Card.Content>
+                    <p className="line-clamp-3">{article.meta.abstract}</p>
+                    <p className="mt-2">{article.meta.date}</p>
+                  </Card.Content>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </section>
         <section id="contact" className="w-full h-full py-12 grid grid-cols-5">
           <div className="h-full p-8 col-span-5 md:col-span-3 flex flex-col space-y-8 justify-center">
             <h1 className="text-xl font-bold text-center">
-              {contactT("title")}
+              {t("contact.title")}
             </h1>
             <p className="text-center text-sm text-opacity-90">
-              {contactT("body")}
+              {t("contact.body")}
             </p>
             <div className="flex flex-row space-x-7 justify-center">
               <a
@@ -220,7 +241,7 @@ const Home = ({ experience, projects }: HomeProps) => {
               type="text"
               required
               className="w-full"
-              label={contactT("nameLabel")}
+              label={t("contact.nameLabel")}
               placeholder="Aspen Collins"
               control={control}
               rules={{
@@ -235,7 +256,7 @@ const Home = ({ experience, projects }: HomeProps) => {
               type="email"
               required
               className="w-full"
-              label={contactT("emailLabel")}
+              label={t("contact.emailLabel")}
               placeholder="aspen@enterprise.com"
               control={control}
               rules={{
@@ -248,7 +269,7 @@ const Home = ({ experience, projects }: HomeProps) => {
               required
               rows={9}
               className="w-full"
-              label={contactT("messageLabel")}
+              label={t("contact.messageLabel")}
               placeholder="Hello Marco,"
               control={control}
               rules={{
@@ -291,30 +312,26 @@ const Home = ({ experience, projects }: HomeProps) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const localesDirectory = path.join(process.cwd(), `public/locales/${locale}`);
+  // const translations = await serverSideTranslations(locale, ["index"]);
 
-  const translations = await serverSideTranslations(locale, [
-    "about",
-    "contact",
-    "experience",
-    "header",
-    "projects",
-  ]);
+  const translations = JSON.parse(
+    fs.readFileSync(path.join(localesDirectory, "index.json"), "utf-8")
+  );
 
-  const experiencePath = path.join(localesDirectory, "experience-content.json");
-  const experience = fs.existsSync(experiencePath)
-    ? JSON.parse(fs.readFileSync(experiencePath, "utf-8"))
-    : [];
-
-  const projectsPath = path.join(localesDirectory, "projects-content.json");
-  const projects = fs.existsSync(projectsPath)
-    ? JSON.parse(fs.readFileSync(projectsPath, "utf-8"))
-    : [];
+  const files = fs.readdirSync("public/articles");
+  const articles = files.map((filename) => ({
+    meta: matter(
+      fs.readFileSync(path.join("public/articles", filename), "utf-8")
+    ).data,
+    slug: filename.split(".")[0],
+  }));
 
   return {
     props: {
-      ...translations,
-      experience,
-      projects,
+      ...(await serverSideTranslations(locale, ["common", "index"])),
+      experience: translations.experience.content || [],
+      projects: translations.projects.content || [],
+      articles,
     },
   };
 };
