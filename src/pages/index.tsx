@@ -7,8 +7,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ArrowDownIcon, MailIcon } from "@heroicons/react/outline";
-import { CheckCircleIcon, ExclamationCircleIcon } from "@heroicons/react/solid";
 import { useForm } from "react-hook-form";
+import matter from "gray-matter";
 import { EmailInformation, sendEmail } from "@libs/mailer";
 import { Project } from "@typeDefs/project";
 import { Experience } from "@typeDefs/experience";
@@ -18,10 +18,7 @@ import Typewriter from "@components/Typewriter";
 import Input from "@components/Input";
 import Card from "@components/Card";
 import Badge from "@components/Badge";
-import SpinIcon from "@components/SpinIcon";
-import matter from "gray-matter";
-
-type RequestStatus = "SUCCESS" | "FAILURE" | "PENDING" | undefined;
+import StatusButton, { Status } from "@components/StatusButton";
 
 type HomeProps = {
   experience: Experience[];
@@ -33,7 +30,7 @@ const Home = ({ experience, projects, articles }: HomeProps) => {
   const { t } = useTranslation("index");
 
   const [displayProfession, setDisplayProfession] = useState(false);
-  const [emailStatus, setEmailStatus] = useState<RequestStatus>();
+  const [emailStatus, setEmailStatus] = useState<Status>(Status.NONE);
 
   useEffect(() => {
     const timeToPrintIntroduction = t("about.introduction").length * 60;
@@ -45,24 +42,11 @@ const Home = ({ experience, projects, articles }: HomeProps) => {
   });
 
   const submitEmailForm = (data: EmailInformation) => {
-    setEmailStatus("PENDING");
+    setEmailStatus(Status.PENDING);
 
     sendEmail(data)
-      .then(() => setEmailStatus("SUCCESS"))
-      .catch(() => setEmailStatus("FAILURE"));
-  };
-
-  const resolveButtonStyles = () => {
-    switch (emailStatus) {
-      case "SUCCESS":
-        return "bg-green-500 hover:bg-green-600 cursor-not-allowed";
-      case "FAILURE":
-        return "bg-red-500 hover:bg-red-600";
-      case "PENDING":
-        return "bg-yellow-500 hover:bg-yellow-600 cursor-wait";
-      case undefined:
-        return "bg-blue-700 hover:bg-blue-800";
-    }
+      .then(() => setEmailStatus(Status.SUCCESS))
+      .catch(() => setEmailStatus(Status.FAILURE));
   };
 
   return (
@@ -278,31 +262,7 @@ const Home = ({ experience, projects, articles }: HomeProps) => {
                 required: { value: true, message: "Required" },
               }}
             />
-            <button
-              className={`w-full flex items-center justify-center p-2 rounded-md text-white ${resolveButtonStyles()}`}
-              disabled={emailStatus == "SUCCESS" || emailStatus == "PENDING"}
-              aria-label="Submit contact form"
-            >
-              {!emailStatus && <>Send</>}
-              {emailStatus == "SUCCESS" && (
-                <>
-                  Sent
-                  <CheckCircleIcon className="h-5 w-5 ml-1" />
-                </>
-              )}
-              {emailStatus == "FAILURE" && (
-                <>
-                  Retry
-                  <ExclamationCircleIcon className="h-5 w-5 ml-1" />
-                </>
-              )}
-              {emailStatus == "PENDING" && (
-                <>
-                  Sending
-                  <SpinIcon className="animate-spin h-4 w-4 ml-1" />
-                </>
-              )}
-            </button>
+            <StatusButton status={emailStatus} />
           </form>
         </section>
       </div>
