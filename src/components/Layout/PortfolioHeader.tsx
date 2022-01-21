@@ -8,6 +8,7 @@ import {
   TranslateIcon,
   UserIcon,
   NewspaperIcon,
+  SpeakerphoneIcon,
 } from "@heroicons/react/solid";
 import useScrollableHide from "@hooks/useScrollableHide";
 import HeaderLink from "./HeaderLink";
@@ -45,6 +46,11 @@ const PortfolioHeader = () => {
         title={t("header.articles")}
         url="#articles"
         Icon={NewspaperIcon}
+      />
+      <HeaderLink
+        title={t("header.languages")}
+        url="#languages"
+        Icon={SpeakerphoneIcon}
       />
       <HeaderLink title={t("header.contact")} url="#contact" Icon={MailIcon} />
       <Menu as="div" className="relative">

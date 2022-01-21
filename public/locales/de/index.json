@@ -72,9 +72,26 @@
   "articles": {
     "title": "Artikel"
   },
+  "languages": {
+    "title": "Sprachen",
+    "content": [
+      {
+        "language": "Spanisch",
+        "level": "Muttersprache"
+      },
+      {
+        "language": "Englisch",
+        "level": "Kompetente Sprachverwendung - C2"
+      },
+      {
+        "language": "Deutsch",
+        "level": "Selbstständige Sprachverwendung - B2"
+      }
+    ]
+  },
   "contact": {
     "title": "Kontaktiere mich",
-    "body": "Erreichen Sie mich, durch das Formular ausfüllen oder durch eine andere unten aufgeführten Methode.",
+    "body": "Sie können mich gerne via unten stehendem Kontaktformular oder durch eine andere unten aufgeführten Methode kontaktieren.",
     "nameLabel": "Name",
     "emailLabel": "E-Mail-Adresse",
     "messageLabel": "Nachrichtentext",

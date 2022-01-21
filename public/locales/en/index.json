@@ -72,6 +72,23 @@
   "articles": {
     "title": "Articles"
   },
+  "languages": {
+    "title": "Languages",
+    "content": [
+      {
+        "language": "Spanish",
+        "level": "Native"
+      },
+      {
+        "language": "English",
+        "level": "Proficiency - C2"
+      },
+      {
+        "language": "German",
+        "level": "Upper Intermediate - B2"
+      }
+    ]
+  },
   "contact": {
     "title": "Contact Me",
     "body": "Reach me out by writing an email using the form or by any other method listed below.",

@@ -72,6 +72,23 @@
   "articles": {
     "title": "Artículos"
   },
+  "languages": {
+    "title": "Idiomas",
+    "content": [
+      {
+        "language": "Español",
+        "level": "Nativo"
+      },
+      {
+        "language": "Inglés",
+        "level": "Maestría - C2"
+      },
+      {
+        "language": "Alemán",
+        "level": "Intermedio alto - B2"
+      }
+    ]
+  },
   "contact": {
     "title": "Contactame",
     "body": "Comuníquese conmigo escribiendo un correo electrónico utilizando el formulario o cualquier otro método que se enumera a continuación.",

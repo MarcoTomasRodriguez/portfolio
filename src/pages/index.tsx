@@ -24,9 +24,13 @@ type HomeProps = {
   experience: Experience[];
   projects: Project[];
   articles: Article[];
+  languages: {
+    language: string;
+    level: string;
+  }[];
 };
 
-const Home = ({ experience, projects, articles }: HomeProps) => {
+const Home = ({ experience, projects, articles, languages }: HomeProps) => {
   const { t } = useTranslation("index");
 
   const [displayProfession, setDisplayProfession] = useState(false);
@@ -144,6 +148,17 @@ const Home = ({ experience, projects, articles }: HomeProps) => {
                     )}
                   </Card.Actions>
                 )}
+              </Card>
+            ))}
+          </div>
+        </section>
+        <section id="languages" className="w-full h-full py-12">
+          <h1 className="mb-7 text-xl font-bold">{t("languages.title")}</h1>
+          <div className="flex flex-col space-y-6">
+            {languages.map((language, index) => (
+              <Card key={index}>
+                <Card.Title>{language.language}</Card.Title>
+                <Card.Content>{language.level}</Card.Content>
               </Card>
             ))}
           </div>
@@ -291,6 +306,7 @@ export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
       ...(await serverSideTranslations(locale, ["common", "index"])),
       experience: translations.experience.content || [],
       projects: translations.projects.content || [],
+      languages: translations.languages.content || [],
       articles,
     },
   };
