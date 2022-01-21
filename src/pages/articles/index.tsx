@@ -45,6 +45,7 @@ const Articles = ({ articles }: ArticlesProps) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const files = fs.readdirSync("public/articles");
+
   const articles = files.map((filename) => ({
     meta: matter(
       fs.readFileSync(path.join("public/articles", filename), "utf-8")

@@ -13,6 +13,7 @@ import { EmailInformation, sendEmail } from "@libs/mailer";
 import { Project } from "@typeDefs/project";
 import { Experience } from "@typeDefs/experience";
 import { Article } from "@typeDefs/article";
+import { Language } from "@typeDefs/language";
 import Layout from "@components/Layout";
 import Typewriter from "@components/Typewriter";
 import Input from "@components/Input";
@@ -24,10 +25,7 @@ type HomeProps = {
   experience: Experience[];
   projects: Project[];
   articles: Article[];
-  languages: {
-    language: string;
-    level: string;
-  }[];
+  languages: Language[];
 };
 
 const Home = ({ experience, projects, articles, languages }: HomeProps) => {
@@ -287,7 +285,6 @@ const Home = ({ experience, projects, articles, languages }: HomeProps) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => {
   const localesDirectory = path.join(process.cwd(), `public/locales/${locale}`);
-  // const translations = await serverSideTranslations(locale, ["index"]);
 
   const translations = JSON.parse(
     fs.readFileSync(path.join(localesDirectory, "index.json"), "utf-8")
